@@ -8,6 +8,8 @@ use App\Observers\ArtifactObserver;
 use Filterable\Contracts\Filterable;
 use Filterable\Traits\Filterable as HasFilters;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
+use Illuminate\Database\Eloquent\Attributes\Scope;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -63,5 +65,25 @@ class Artifact extends Model implements Filterable
     public function release(): BelongsTo
     {
         return $this->belongsTo(Release::class);
+    }
+
+    /**
+     * Scope to filter by platform.
+     */
+    #[Scope]
+    public function scopeForPlatform(Builder $query, string $platform): Builder
+    {
+        return $query->where('platform', $platform);
+    }
+
+    /**
+     * Scope for downloadable artifacts from published major stable releases.
+     */
+    #[Scope]
+    public function scopeForDownload(Builder $query): Builder
+    {
+        return $query
+            ->with(['release' => fn ($q) => $q->withCount('artifacts')])
+            ->whereHas('release', fn ($q) => $q->stable()->major()->published());
     }
 }

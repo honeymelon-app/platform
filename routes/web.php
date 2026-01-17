@@ -1,6 +1,5 @@
 <?php
 
-use App\Enums\ReleaseChannel;
 use App\Http\Controllers\SeoController;
 use App\Http\Controllers\Web\Admin\ArtifactController;
 use App\Http\Controllers\Web\Admin\DashboardController;
@@ -11,10 +10,7 @@ use App\Http\Controllers\Web\Admin\ReleaseController;
 use App\Http\Controllers\Web\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Web\Auth\NewPasswordController;
 use App\Http\Controllers\Web\Auth\PasswordResetLinkController;
-use App\Http\Resources\ArtifactResource;
-use App\Http\Resources\ProductResource;
-use App\Models\Artifact;
-use App\Models\Product;
+use App\Http\Controllers\Web\HomeController;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -32,40 +28,7 @@ Route::get('/sitemap.xml', [SeoController::class, 'sitemap'])->name('sitemap');
 | Public Routes
 |--------------------------------------------------------------------------
 */
-Route::get('/', function () {
-    $latestArtifact = Artifact::query()
-        ->with(['release' => function ($query) {
-            $query->withCount('artifacts');
-        }])
-        ->whereHas('release', function ($query) {
-            $query->where('channel', ReleaseChannel::STABLE)
-                ->where('major', true)
-                ->whereNotNull('published_at');
-        })
-        ->where('platform', 'darwin-aarch64')
-        ->latest('created_at')
-        ->first();
-
-    $product = Product::query()
-        ->where('is_active', true)
-        ->first();
-
-    $faqs = \App\Models\Faq::query()
-        ->where('is_active', true)
-        ->orderBy('order')
-        ->get(['question', 'answer'])
-        ->map(fn ($faq) => [
-            'question' => $faq->question,
-            'answer' => $faq->answer,
-        ])
-        ->toArray();
-
-    return Inertia::render('Welcome', [
-        'artifact' => $latestArtifact ? (new ArtifactResource($latestArtifact))->resolve() : null,
-        'product' => $product ? (new ProductResource($product))->resolve() : null,
-        'faqs' => $faqs,
-    ]);
-})->name('home');
+Route::get('/', HomeController::class)->name('home');
 
 Route::get('/download', function (): RedirectResponse {
     return redirect()->route('home', ['scrollTo' => 'download']);

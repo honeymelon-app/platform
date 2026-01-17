@@ -119,6 +119,15 @@ class Release extends Model implements Filterable
     }
 
     /**
+     * Scope to only major releases.
+     */
+    #[Scope]
+    public function scopeMajor(Builder $query): Builder
+    {
+        return $query->where('major', true);
+    }
+
+    /**
      * Check if the release is stable.
      */
     public function isStable(): bool
