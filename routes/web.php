@@ -11,11 +11,11 @@ use App\Http\Controllers\Web\Admin\ReleaseController;
 use App\Http\Controllers\Web\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Web\Auth\NewPasswordController;
 use App\Http\Controllers\Web\Auth\PasswordResetLinkController;
-use App\Http\Controllers\Web\DownloadController;
 use App\Http\Resources\ArtifactResource;
 use App\Http\Resources\ProductResource;
 use App\Models\Artifact;
 use App\Models\Product;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -64,7 +64,9 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
-Route::get('/download', DownloadController::class)->name('download');
+Route::get('/download', function (): RedirectResponse {
+    return redirect()->route('home', ['scrollTo' => 'download']);
+})->name('download');
 
 // SEO-friendly redirects to landing page sections (301 for search engines)
 Route::redirect('/pricing', '/#pricing', 301)->name('pricing');
