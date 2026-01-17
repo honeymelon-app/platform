@@ -40,15 +40,16 @@ class PageVisitTrackingTest extends TestCase
         ]);
     }
 
-    public function test_download_page_visit_is_tracked(): void
+    public function test_download_redirects_to_homepage(): void
     {
         $response = $this->get('/download');
 
-        $response->assertStatus(200);
+        $response->assertStatus(302);
+        $response->assertRedirect('/?scrollTo=download');
 
-        $this->assertDatabaseHas('page_visits', [
+        // Redirects don't track page visits
+        $this->assertDatabaseMissing('page_visits', [
             'path' => 'download',
-            'route_name' => 'download',
         ]);
     }
 
