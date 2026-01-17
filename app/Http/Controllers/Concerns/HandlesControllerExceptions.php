@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Log;
 
 /**
  * Provides standardized exception handling with logging for controllers.
+ * Also includes standardized response methods for common redirect patterns.
  */
 trait HandlesControllerExceptions
 {
@@ -54,5 +55,49 @@ trait HandlesControllerExceptions
         return redirect()
             ->route($redirectRoute, $routeParams)
             ->with('error', $message.': '.$exception->getMessage());
+    }
+
+    /**
+     * Return a success response that redirects back.
+     */
+    protected function successResponse(string $message): RedirectResponse
+    {
+        return redirect()
+            ->back()
+            ->with('success', $message);
+    }
+
+    /**
+     * Return an error response that redirects back.
+     */
+    protected function errorResponse(string $message): RedirectResponse
+    {
+        return redirect()
+            ->back()
+            ->with('error', $message);
+    }
+
+    /**
+     * Return a success response that redirects to a named route.
+     *
+     * @param  array<int|string, mixed>  $params
+     */
+    protected function successRedirect(string $route, string $message, array $params = []): RedirectResponse
+    {
+        return redirect()
+            ->route($route, $params)
+            ->with('success', $message);
+    }
+
+    /**
+     * Return an error response that redirects to a named route.
+     *
+     * @param  array<int|string, mixed>  $params
+     */
+    protected function errorRedirect(string $route, string $message, array $params = []): RedirectResponse
+    {
+        return redirect()
+            ->route($route, $params)
+            ->with('error', $message);
     }
 }

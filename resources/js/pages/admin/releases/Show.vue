@@ -18,7 +18,7 @@ import { dashboard } from '@/routes';
 import releasesRoute from '@/routes/admin/releases';
 import type { BreadcrumbItem } from '@/types';
 import type { Release, ReleaseArtifact } from '@/types/resources';
-import { Head, useForm } from '@inertiajs/vue3';
+import { Head, router, useForm } from '@inertiajs/vue3';
 import {
     Calendar,
     ChevronDown,
@@ -81,9 +81,29 @@ const hasArtifacts = computed(() => {
     return props.release.artifacts && props.release.artifacts.length > 0;
 });
 
-const publishRelease = () => {
-    console.log('Publish release:', props.release.version);
-    // Implement publish logic
+const isPublished = computed(() => {
+    return props.release.is_downloadable;
+});
+
+// Publish/Unpublish functionality
+const isPublishing = ref(false);
+
+const togglePublish = () => {
+    isPublishing.value = true;
+
+    const action = isPublished.value ? 'unpublish' : 'publish';
+    const url = `/admin/releases/${props.release.id}/${action}`;
+
+    router.post(
+        url,
+        {},
+        {
+            preserveScroll: true,
+            onFinish: () => {
+                isPublishing.value = false;
+            },
+        },
+    );
 };
 
 // Delete release functionality
@@ -213,9 +233,22 @@ const deleteRelease = () => {
                         <Download class="mr-2 h-4 w-4" />
                         No Artifacts
                     </Button>
-                    <Button size="sm" @click="publishRelease">
+                    <Button
+                        size="sm"
+                        :variant="isPublished ? 'outline' : 'default'"
+                        :disabled="isPublishing || !hasArtifacts"
+                        @click="togglePublish"
+                    >
                         <Rocket class="mr-2 h-4 w-4" />
-                        Publish
+                        {{
+                            isPublishing
+                                ? isPublished
+                                    ? 'Unpublishing...'
+                                    : 'Publishing...'
+                                : isPublished
+                                  ? 'Unpublish'
+                                  : 'Publish'
+                        }}
                     </Button>
                     <ConfirmDialog
                         v-model:open="deleteDialogOpen"

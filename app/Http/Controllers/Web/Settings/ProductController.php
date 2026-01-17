@@ -61,13 +61,13 @@ class ProductController extends Controller
             try {
                 $this->stripeSyncService->pushProductMetadataToStripe($product);
 
-                return back()->with('success', 'Product settings updated and synced to Stripe successfully.');
+                return $this->successResponse('Product settings updated and synced to Stripe successfully.');
             } catch (\Throwable $e) {
-                return back()->with('error', 'Product saved locally but failed to sync to Stripe: '.$e->getMessage());
+                return $this->errorResponse('Product saved locally but failed to sync to Stripe: '.$e->getMessage());
             }
         }
 
-        return back()->with('success', 'Product settings updated successfully.');
+        return $this->successResponse('Product settings updated successfully.');
     }
 
     /**
@@ -78,19 +78,19 @@ class ProductController extends Controller
         $product = Product::query()->first();
 
         if (! $product?->stripe_product_id) {
-            return back()->with('error', 'No Stripe product ID configured.');
+            return $this->errorResponse('No Stripe product ID configured.');
         }
 
         try {
             $synced = $this->stripeSyncService->syncProduct($product);
 
             if ($synced) {
-                return back()->with('success', 'Product synced from Stripe successfully.');
+                return $this->successResponse('Product synced from Stripe successfully.');
             }
 
-            return back()->with('info', 'Product is already up to date with Stripe.');
+            return redirect()->back()->with('info', 'Product is already up to date with Stripe.');
         } catch (\Throwable $e) {
-            return back()->with('error', 'Failed to sync from Stripe: '.$e->getMessage());
+            return $this->errorResponse('Failed to sync from Stripe: '.$e->getMessage());
         }
     }
 
@@ -102,19 +102,19 @@ class ProductController extends Controller
         $product = Product::query()->first();
 
         if (! $product?->stripe_product_id) {
-            return back()->with('error', 'No Stripe product ID configured.');
+            return $this->errorResponse('No Stripe product ID configured.');
         }
 
         try {
             $stripeData = $this->stripeSyncService->getProductDetails($product->stripe_product_id);
 
             if (! $stripeData) {
-                return back()->with('error', 'Could not fetch product from Stripe.');
+                return $this->errorResponse('Could not fetch product from Stripe.');
             }
 
-            return back()->with('stripe_preview', $stripeData);
+            return redirect()->back()->with('stripe_preview', $stripeData);
         } catch (\Throwable $e) {
-            return back()->with('error', 'Failed to fetch from Stripe: '.$e->getMessage());
+            return $this->errorResponse('Failed to fetch from Stripe: '.$e->getMessage());
         }
     }
 }

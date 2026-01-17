@@ -107,6 +107,8 @@ Route::middleware('auth')->group(function () {
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('releases', ReleaseController::class)->only(['index', 'show', 'destroy']);
+        Route::post('releases/{release}/publish', [ReleaseController::class, 'publish'])->name('releases.publish');
+        Route::post('releases/{release}/unpublish', [ReleaseController::class, 'unpublish'])->name('releases.unpublish');
         Route::resource('artifacts', ArtifactController::class)->only(['index', 'show', 'destroy']);
         Route::resource('licenses', LicenseController::class)->only(['index', 'show', 'store']);
         Route::post('licenses/{license}/revoke', [LicenseController::class, 'revoke'])->name('licenses.revoke');

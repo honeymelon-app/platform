@@ -110,4 +110,26 @@ class ReleaseFactory extends Factory
     {
         return $this->state(fn () => ['user_id' => $user->id]);
     }
+
+    /**
+     * Configure the factory for an unpublished release (draft).
+     */
+    public function unpublished(): self
+    {
+        return $this->state(fn () => [
+            'is_downloadable' => false,
+            'published_at' => null,
+        ]);
+    }
+
+    /**
+     * Configure the factory for a published release.
+     */
+    public function published(): self
+    {
+        return $this->state(fn () => [
+            'is_downloadable' => true,
+            'published_at' => fake()->dateTimeBetween('-180 days', 'now'),
+        ]);
+    }
 }

@@ -92,9 +92,11 @@ class OrderController extends Controller
         try {
             $refundService->refund($order, $request->validated('reason'));
 
-            return redirect()
-                ->route('admin.orders.show', $order)
-                ->with('success', 'Order has been refunded successfully. The associated license has been revoked.');
+            return $this->successRedirect(
+                'admin.orders.show',
+                'Order has been refunded successfully. The associated license has been revoked.',
+                [$order]
+            );
         } catch (\Exception $e) {
             return $this->handleWebException(
                 $e,

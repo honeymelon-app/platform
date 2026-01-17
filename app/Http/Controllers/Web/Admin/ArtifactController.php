@@ -125,8 +125,7 @@ class ArtifactController extends Controller
     {
         $artifact->delete(); // Observer will handle R2 deletion
 
-        return redirect()->route('admin.artifacts.index')
-            ->with('success', 'Artifact deleted successfully.');
+        return $this->successRedirect('admin.artifacts.index', 'Artifact deleted successfully.');
     }
 
     /**

@@ -148,17 +148,21 @@ class LicenseController extends Controller
     public function revoke(AdminRevokeLicenseRequest $request, License $license, LicenseService $licenseService): RedirectResponse
     {
         if (! $license->isActive()) {
-            return redirect()
-                ->route('admin.licenses.show', $license)
-                ->with('error', 'License is already '.$license->status->label().'.');
+            return $this->errorRedirect(
+                'admin.licenses.show',
+                'License is already '.$license->status->label().'.',
+                [$license]
+            );
         }
 
         try {
             $licenseService->revoke($license);
 
-            return redirect()
-                ->route('admin.licenses.show', $license)
-                ->with('success', 'License has been revoked successfully.');
+            return $this->successRedirect(
+                'admin.licenses.show',
+                'License has been revoked successfully.',
+                [$license]
+            );
         } catch (\Exception $e) {
             return $this->handleWebException(
                 $e,
@@ -182,9 +186,11 @@ class LicenseController extends Controller
         try {
             $licenseService->resetActivation($license);
 
-            return redirect()
-                ->route('admin.licenses.show', $license)
-                ->with('success', 'License activation has been reset. The license can now be activated on a new device.');
+            return $this->successRedirect(
+                'admin.licenses.show',
+                'License activation has been reset. The license can now be activated on a new device.',
+                [$license]
+            );
         } catch (\Exception $e) {
             return $this->handleWebException(
                 $e,

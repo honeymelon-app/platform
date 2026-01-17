@@ -140,6 +140,21 @@ export const columns: ColumnDef<Release>[] = [
         },
     },
     {
+        accessorKey: 'is_downloadable',
+        header: 'Status',
+        cell: ({ row }) => {
+            const isDownloadable = row.getValue('is_downloadable') as boolean;
+            return h(
+                Badge,
+                {
+                    variant: isDownloadable ? 'default' : 'secondary',
+                    class: 'text-xs',
+                },
+                () => (isDownloadable ? 'Published' : 'Draft'),
+            );
+        },
+    },
+    {
         accessorKey: 'published_at',
         header: ({ column }) =>
             h(
@@ -249,13 +264,27 @@ export const columns: ColumnDef<Release>[] = [
                                     h(DropdownMenuSeparator),
                                     h(
                                         DropdownMenuItem,
-                                        {},
+                                        {
+                                            onClick: () => {
+                                                const action =
+                                                    release.is_downloadable
+                                                        ? 'unpublish'
+                                                        : 'publish';
+                                                router.post(
+                                                    `/admin/releases/${release.id}/${action}`,
+                                                    {},
+                                                    { preserveScroll: true },
+                                                );
+                                            },
+                                        },
                                         {
                                             default: () => [
                                                 h(Rocket, {
                                                     class: 'mr-2 h-4 w-4',
                                                 }),
-                                                'Publish to Channel',
+                                                release.is_downloadable
+                                                    ? 'Unpublish'
+                                                    : 'Publish Release',
                                             ],
                                         },
                                     ),

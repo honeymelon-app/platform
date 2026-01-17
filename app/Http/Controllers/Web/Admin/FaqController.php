@@ -83,11 +83,9 @@ class FaqController extends Controller
      */
     public function store(StoreFaqRequest $request): RedirectResponse
     {
-        $faq = Faq::create($request->validated());
+        Faq::create($request->validated());
 
-        return redirect()
-            ->route('admin.faqs.index')
-            ->with('success', 'FAQ created successfully.');
+        return $this->successRedirect('admin.faqs.index', 'FAQ created successfully.');
     }
 
     /**
@@ -97,9 +95,7 @@ class FaqController extends Controller
     {
         $faq->update($request->validated());
 
-        return redirect()
-            ->route('admin.faqs.index')
-            ->with('success', 'FAQ updated successfully.');
+        return $this->successRedirect('admin.faqs.index', 'FAQ updated successfully.');
     }
 
     /**
@@ -109,8 +105,6 @@ class FaqController extends Controller
     {
         $faq->delete();
 
-        return redirect()
-            ->route('admin.faqs.index')
-            ->with('success', 'FAQ deleted successfully.');
+        return $this->successRedirect('admin.faqs.index', 'FAQ deleted successfully.');
     }
 }
