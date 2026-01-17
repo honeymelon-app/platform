@@ -5,7 +5,10 @@ import { Check } from 'lucide-vue-next';
 </script>
 
 <template>
-    <section class="border-t border-border/50 bg-muted/30 py-24 sm:py-32">
+    <section
+        id="interface"
+        class="border-t border-border/50 bg-muted/30 py-24 sm:py-32"
+    >
         <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <AnimatedSection>
                 <div class="text-center">

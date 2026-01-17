@@ -22,7 +22,7 @@ const proofPoints = [
 </script>
 
 <template>
-    <section class="border-t border-border/50 py-20 sm:py-24">
+    <section id="proof" class="border-t border-border/50 py-20 sm:py-24">
         <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
             <AnimatedSection>
                 <div class="text-center">

@@ -7,7 +7,7 @@ import { ArrowRight, ChevronRight } from 'lucide-vue-next';
 </script>
 
 <template>
-    <section class="relative pt-16 pb-24 sm:pt-20 sm:pb-32">
+    <section id="hero" class="relative pt-16 pb-24 sm:pt-20 sm:pb-32">
         <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <AnimatedSection>
                 <div class="text-center">

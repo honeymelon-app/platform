@@ -34,9 +34,12 @@ Route::get('/sitemap.xml', [SeoController::class, 'sitemap'])->name('sitemap');
 */
 Route::get('/', function () {
     $latestArtifact = Artifact::query()
-        ->with('release')
+        ->with(['release' => function ($query) {
+            $query->withCount('artifacts');
+        }])
         ->whereHas('release', function ($query) {
             $query->where('channel', ReleaseChannel::STABLE)
+                ->where('major', true)
                 ->whereNotNull('published_at');
         })
         ->where('platform', 'darwin-aarch64')

@@ -18,7 +18,7 @@ import {
 import MarketingLayout from '@/layouts/MarketingLayout.vue';
 import type { Artifact, Product } from '@/types/api';
 import { Head, usePage } from '@inertiajs/vue3';
-import { computed, onMounted, onUnmounted } from 'vue';
+import { computed, nextTick, onMounted, onUnmounted } from 'vue';
 
 interface Faq {
     question: string;
@@ -89,6 +89,20 @@ const { headTags, jsonLdScript } = useSeoMeta({
     jsonLd: jsonLdSchemas,
 });
 
+// Valid section IDs for scrollTo
+const validSectionIds = [
+    'hero',
+    'proof',
+    'features',
+    'how-it-works',
+    'interface',
+    'pricing',
+    'download',
+    'comparison',
+    'faq',
+    'cta',
+];
+
 // Inject JSON-LD script into document head
 onMounted(() => {
     const script = document.createElement('script');
@@ -96,6 +110,19 @@ onMounted(() => {
     script.textContent = jsonLdScript.value;
     script.id = 'json-ld-schema';
     document.head.appendChild(script);
+
+    // Handle scrollTo query parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const scrollTo = urlParams.get('scrollTo');
+
+    if (scrollTo && validSectionIds.includes(scrollTo)) {
+        nextTick(() => {
+            const element = document.getElementById(scrollTo);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    }
 });
 
 // Clean up on unmount

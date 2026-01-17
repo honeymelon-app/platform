@@ -5,7 +5,7 @@ import { ArrowRight } from 'lucide-vue-next';
 </script>
 
 <template>
-    <section class="py-24 sm:py-32">
+    <section id="cta" class="py-24 sm:py-32">
         <div class="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
             <AnimatedSection>
                 <h2
