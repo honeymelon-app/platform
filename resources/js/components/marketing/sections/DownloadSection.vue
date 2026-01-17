@@ -2,6 +2,7 @@
 import AnimatedSection from '@/components/marketing/AnimatedSection.vue';
 import Badge from '@/components/ui/badge/Badge.vue';
 import Button from '@/components/ui/button/Button.vue';
+import { formatDate, formatFileSize } from '@/lib/formatters';
 import type { Artifact } from '@/types/api';
 import { Download } from 'lucide-vue-next';
 
@@ -13,22 +14,6 @@ function triggerDownload(): void {
     if (props.artifact?.url) {
         window.location.href = props.artifact.url;
     }
-}
-
-function formatBytes(bytes: number): string {
-    if (bytes === 0) return '0 Bytes';
-    const k = 1024;
-    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
-    const i = Math.floor(Math.log(bytes) / Math.log(k));
-    return Math.round((bytes / Math.pow(k, i)) * 100) / 100 + ' ' + sizes[i];
-}
-
-function formatDate(dateString: string): string {
-    return new Date(dateString).toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-    });
 }
 </script>
 
@@ -83,19 +68,21 @@ function formatDate(dateString: string): string {
                                     </dt>
                                     <dd class="font-medium text-foreground">
                                         {{
-                                            artifact.release?.published_at
-                                                ? formatDate(
-                                                      artifact.release
-                                                          .published_at,
-                                                  )
-                                                : 'N/A'
+                                            formatDate(
+                                                artifact.release?.published_at,
+                                                {
+                                                    year: 'numeric',
+                                                    month: 'long',
+                                                    day: 'numeric',
+                                                },
+                                            )
                                         }}
                                     </dd>
                                 </div>
                                 <div class="flex justify-between">
                                     <dt class="text-muted-foreground">Size</dt>
                                     <dd class="font-medium text-foreground">
-                                        {{ formatBytes(artifact.size) }}
+                                        {{ formatFileSize(artifact.size) }}
                                     </dd>
                                 </div>
                                 <div class="flex justify-between">
