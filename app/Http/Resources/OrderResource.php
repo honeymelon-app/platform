@@ -18,12 +18,15 @@ class OrderResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'user_id' => $this->user_id,
+            'product_id' => $this->product_id,
             'provider' => $this->provider,
             'external_id' => $this->external_id,
             'email' => $this->email,
             'amount_cents' => $this->amount_cents,
             'formatted_amount' => $this->formatted_amount,
             'currency' => $this->currency,
+            'meta' => $this->meta,
             'license_id' => $this->license?->id,
             'license' => $this->whenLoaded('license', fn () => (new LicenseResource($this->license))->resolve()),
             'refund_id' => $this->refund_id,
@@ -31,7 +34,9 @@ class OrderResource extends JsonResource
             'is_refunded' => $this->isRefunded(),
             'can_be_refunded' => $this->canBeRefunded(),
             'is_within_refund_window' => $this->isWithinRefundWindow(),
+            'deleted_at' => $this->deleted_at?->toIso8601String(),
             'created_at' => $this->created_at->toIso8601String(),
+            'updated_at' => $this->updated_at->toIso8601String(),
         ];
     }
 }

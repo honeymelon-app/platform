@@ -20,8 +20,10 @@ class WebhookEventResource extends JsonResource
             'id' => $this->id,
             'provider' => $this->provider,
             'type' => $this->type->value,
+            'payload' => $this->payload,
             'processed_at' => $this->processed_at?->toIso8601String(),
             'created_at' => $this->created_at->toIso8601String(),
+            'updated_at' => $this->updated_at->toIso8601String(),
         ];
     }
 }

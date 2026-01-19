@@ -19,15 +19,27 @@ class ReleaseResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'product_id' => $this->product_id,
+            'github_id' => $this->github_id,
             'version' => $this->version,
+            'name' => $this->name,
             'tag' => $this->tag,
             'commit_hash' => $this->commit_hash,
+            'author' => $this->author,
+            'html_url' => $this->html_url,
+            'target_commitish' => $this->target_commitish,
             'channel' => $this->channel->value,
+            'prerelease' => $this->prerelease,
+            'draft' => $this->draft,
             'notes' => $this->notes,
             'published_at' => $this->published_at?->toIso8601String(),
+            'github_created_at' => $this->github_created_at?->toIso8601String(),
+            'is_downloadable' => $this->is_downloadable,
             'major' => $this->major,
+            'user_id' => $this->user_id,
             'created_by' => $this->user_id,
             'created_at' => $this->created_at->toIso8601String(),
+            'updated_at' => $this->updated_at->toIso8601String(),
             'artifacts_count' => $this->whenCounted('artifacts'),
             'artifacts' => $this->when($this->relationLoaded('artifacts'), function () {
                 return $this->artifacts->map(function ($artifact) {

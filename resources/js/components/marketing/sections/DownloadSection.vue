@@ -10,6 +10,9 @@ const props = defineProps<{
     artifact?: Artifact | null;
 }>();
 
+console.log(props.artifact);
+
+
 function triggerDownload(): void {
     if (props.artifact?.url) {
         window.location.href = props.artifact.url;

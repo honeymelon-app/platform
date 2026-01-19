@@ -122,17 +122,22 @@ class OrderFilter extends Filter
     {
         $this->select([
             'id',
+            'user_id',
+            'product_id',
             'provider',
             'external_id',
             'email',
             'amount_cents',
             'currency',
+            'meta',
             'refund_id',
             'refunded_at',
+            'deleted_at',
             'created_at',
+            'updated_at',
         ]);
 
-        $this->with(['license:id,order_id,key,key_plain,status,max_major_version,activated_at,activation_count,device_id,meta,created_at']);
+        $this->with(['license:id,user_id,product_id,order_id,key,key_plain,status,max_major_version,can_access_prereleases,activated_at,activation_count,device_id,meta,deleted_at,created_at,updated_at']);
 
         return $this;
     }

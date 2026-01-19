@@ -11,7 +11,6 @@ use App\Http\Controllers\Web\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Web\Auth\NewPasswordController;
 use App\Http\Controllers\Web\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Web\HomeController;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -30,12 +29,9 @@ Route::get('/sitemap.xml', [SeoController::class, 'sitemap'])->name('sitemap');
 */
 Route::get('/', HomeController::class)->name('home');
 
-Route::get('/download', function (): RedirectResponse {
-    return redirect()->route('home', ['scrollTo' => 'download']);
-})->name('download');
-
 // SEO-friendly redirects to landing page sections (301 for search engines)
 Route::redirect('/pricing', '/#pricing', 301)->name('pricing');
+Route::redirect('/download', '/#download', 301)->name('download');
 
 Route::get('/privacy', function () {
     return Inertia::render('Privacy');

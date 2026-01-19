@@ -35,6 +35,7 @@ export interface Release {
     user_id: string | null;
     created_at: string;
     updated_at: string;
+    is_downloadable?: boolean;
     user?: User;
     artifacts?: Artifact[];
     updates?: Update[];
