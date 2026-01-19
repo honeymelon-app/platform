@@ -15,13 +15,13 @@ class DownloadControllerTest extends TestCase
     {
         $response = $this->get('/download');
 
-        $response->assertRedirect('/?scrollTo=download');
+        $response->assertRedirect('/#download');
     }
 
     public function test_download_redirect_is_temporary(): void
     {
         $response = $this->get('/download');
 
-        $response->assertStatus(302);
+        $response->assertStatus(301);
     }
 }

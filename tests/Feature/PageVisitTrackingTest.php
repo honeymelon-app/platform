@@ -44,8 +44,8 @@ class PageVisitTrackingTest extends TestCase
     {
         $response = $this->get('/download');
 
-        $response->assertStatus(302);
-        $response->assertRedirect('/?scrollTo=download');
+        $response->assertStatus(301);
+        $response->assertRedirect('/#download');
 
         // Redirects don't track page visits
         $this->assertDatabaseMissing('page_visits', [
