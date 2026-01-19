@@ -4,16 +4,13 @@ declare(strict_types=1);
 
 namespace App\Services;
 
-use App\Constants\DateRanges;
 use App\Models\Artifact;
 use App\Models\Download;
 use App\Models\License;
 use App\Models\User;
 use App\Support\Semver;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Filesystem\FilesystemAdapter;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class DownloadService
@@ -87,8 +84,8 @@ class DownloadService
         // Record the download
         $this->recordDownload($artifact, $user, $license, $ipAddress, $userAgent);
 
-        // Generate the download URL
-        return $this->generateDownloadUrl($artifact);
+        // Generate the download URL with forced download
+        return $artifact->getDownloadUrl(forceDownload: true);
     }
 
     /**
@@ -109,32 +106,6 @@ class DownloadService
             'user_agent' => $userAgent ? substr($userAgent, 0, 500) : null,
             'downloaded_at' => now(),
         ]);
-    }
-
-    /**
-     * Generate a download URL for an artifact.
-     * Only R2 is supported as the artifact source.
-     */
-    protected function generateDownloadUrl(Artifact $artifact): string
-    {
-        // For R2/S3, generate a signed URL
-        if (in_array($artifact->source, ['r2', 's3']) && $artifact->path) {
-            $disk = $artifact->source === 'r2' ? 'r2' : 's3';
-
-            /** @var FilesystemAdapter $filesystem */
-            $filesystem = Storage::disk($disk);
-
-            return $filesystem->temporaryUrl(
-                $artifact->path,
-                now()->addMinutes(DateRanges::TEMPORARY_URL_MINUTES),
-                [
-                    'ResponseContentDisposition' => 'attachment; filename="'.$artifact->filename.'"',
-                ]
-            );
-        }
-
-        // Fallback to stored URL (should not happen in production)
-        return $artifact->url ?? '';
     }
 
     /**

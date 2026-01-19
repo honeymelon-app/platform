@@ -47,21 +47,7 @@ final class ArtifactStorageService implements ArtifactStorage
      */
     public function generateDownloadUrl(Artifact $artifact): ?string
     {
-        if ($artifact->source === 'github' && $artifact->url) {
-            return $artifact->url;
-        }
-
-        if (! empty($artifact->path)) {
-            try {
-                if ($this->disk->exists($artifact->path)) {
-                    return $this->disk->temporaryUrl($artifact->path, now()->addHour());
-                }
-            } catch (\Exception) {
-                return $artifact->url;
-            }
-        }
-
-        return $artifact->url;
+        return $artifact->getDownloadUrl();
     }
 
     /**
@@ -122,7 +108,7 @@ final class ArtifactStorageService implements ArtifactStorage
     public function enrichArtifact(Artifact $artifact): Artifact
     {
         $artifact->setAttribute('storage_status', $this->checkSyncStatus($artifact));
-        $artifact->setAttribute('download_url', $this->generateDownloadUrl($artifact));
+        $artifact->setAttribute('download_url', $artifact->getDownloadUrl());
 
         return $artifact;
     }

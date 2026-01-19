@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Models\Concerns\HasDownloadUrl;
 use App\Observers\ArtifactObserver;
 use Filterable\Contracts\Filterable;
 use Filterable\Traits\Filterable as HasFilters;
@@ -19,7 +20,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Artifact extends Model implements Filterable
 {
     /** @use HasFactory<\Database\Factories\ArtifactFactory> */
-    use HasFactory, HasFilters, HasUuids;
+    use HasDownloadUrl, HasFactory, HasFilters, HasUuids;
 
     /**
      * The attributes that are mass assignable.

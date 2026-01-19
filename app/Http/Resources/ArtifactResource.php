@@ -32,6 +32,7 @@ class ArtifactResource extends JsonResource
             'notarized' => $this->notarized,
             'url' => $this->url,
             'path' => $this->path,
+            'download_url' => $this->resource->getDownloadUrl(),
             'github_created_at' => $this->github_created_at?->toIso8601String(),
             'github_updated_at' => $this->github_updated_at?->toIso8601String(),
             'created_at' => $this->created_at->toIso8601String(),

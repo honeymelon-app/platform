@@ -13,13 +13,8 @@ const props = defineProps<{
 console.log(props.artifact);
 
 function triggerDownload(): void {
-    if (props.artifact?.release?.version && props.artifact?.platform) {
-        // Use API endpoint to get signed download URL
-        const params = new URLSearchParams({
-            version: props.artifact.release.version,
-            platform: props.artifact.platform,
-        });
-        window.location.href = `/api/download?${params.toString()}`;
+    if (props.artifact?.download_url) {
+        window.location.href = props.artifact.download_url;
     }
 }
 </script>
@@ -103,7 +98,7 @@ function triggerDownload(): void {
                             </dl>
 
                             <Button
-                                :disabled="!artifact?.release?.version"
+                                :disabled="!artifact?.download_url"
                                 size="lg"
                                 class="mt-6 h-12 w-full text-base"
                                 @click="triggerDownload"
