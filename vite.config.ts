@@ -1,8 +1,10 @@
-import { wayfinder } from '@laravel/vite-plugin-wayfinder';
 import tailwindcss from '@tailwindcss/vite';
 import vue from '@vitejs/plugin-vue';
 import laravel from 'laravel-vite-plugin';
 import { defineConfig } from 'vite';
+import { wayfinder } from '@laravel/vite-plugin-wayfinder';
+
+const shouldRunWayfinder = process.env.WAYFINDER_SKIP !== '1';
 
 export default defineConfig({
     plugins: [
@@ -12,9 +14,7 @@ export default defineConfig({
             refresh: true,
         }),
         tailwindcss(),
-        wayfinder({
-            formVariants: true,
-        }),
+        ...(shouldRunWayfinder ? [wayfinder({ formVariants: true })] : []),
         vue({
             template: {
                 transformAssetUrls: {
