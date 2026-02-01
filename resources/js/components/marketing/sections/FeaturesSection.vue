@@ -52,6 +52,10 @@ const featureGroups = [
                 description: 'Track progress across all conversions',
             },
             {
+                name: 'Open-source roadmap',
+                description: 'Follow development and contribute on GitHub',
+            },
+            {
                 name: 'Clean interface',
                 description: 'Native macOS design that stays out of your way',
             },

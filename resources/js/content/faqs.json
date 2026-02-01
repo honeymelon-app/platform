@@ -5,11 +5,11 @@
     },
     {
         "question": "Is Honeymelon free?",
-        "answer": "Honeymelon offers a free trial with limited conversions. For unlimited conversions and advanced features, a one-time license purchase is required. Visit our pricing page for more details."
+        "answer": "Yes. Honeymelon is free and open source, with all features available at no cost."
     },
     {
         "question": "Does Honeymelon work offline?",
-        "answer": "Yes! Honeymelon is designed for offline use. All media processing happens locally on your Mac with no cloud uploads or internet connection required. Your privacy is our priority."
+        "answer": "Yes! Honeymelon is designed for offline use. All media processing happens locally on your Mac with no cloud uploads or activation requirements. Your privacy is our priority."
     },
     {
         "question": "What file formats are supported?",
@@ -28,7 +28,7 @@
         "answer": "Yes! Honeymelon is optimized for Apple Silicon with native ARM64 support and leverages hardware acceleration on M-series chips for maximum performance."
     },
     {
-        "question": "How do I get support?",
-        "answer": "Visit our documentation for guides and tutorials. For technical support, check our GitHub repository or contact our support team through the help center."
+        "question": "How do I contribute?",
+        "answer": "You can open issues, request features, or contribute code through the Honeymelon GitHub repository."
     }
 ]

@@ -10,8 +10,6 @@ const props = defineProps<{
     artifact?: Artifact | null;
 }>();
 
-console.log(props.artifact);
-
 function triggerDownload(): void {
     if (props.artifact?.download_url) {
         window.location.href = props.artifact.download_url;
@@ -33,7 +31,7 @@ function triggerDownload(): void {
                         Download for macOS
                     </h2>
                     <p class="mt-4 text-lg text-muted-foreground">
-                        Free to download. Requires a license to activate.
+                        Free to download. No activation or payment required.
                     </p>
                 </div>
             </AnimatedSection>
@@ -150,19 +148,19 @@ function triggerDownload(): void {
                                         3
                                     </span>
                                     <span class="text-muted-foreground">
-                                        Launch and enter your license key to
-                                        activate
+                                        Launch and start converting right away
                                     </span>
                                 </li>
                             </ol>
 
                             <p class="mt-6 text-sm text-muted-foreground">
-                                Don't have a license?
                                 <a
-                                    href="#pricing"
+                                    href="https://github.com/honeymelon-app/honeymelon"
                                     class="font-medium text-primary hover:underline"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                 >
-                                    Purchase one above
+                                    View the open-source repo
                                 </a>
                             </p>
                         </div>

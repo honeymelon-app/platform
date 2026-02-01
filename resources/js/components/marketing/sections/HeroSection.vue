@@ -35,7 +35,7 @@ import { ArrowRight, ChevronRight } from 'lucide-vue-next';
                         class="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground sm:text-xl"
                     >
                         Remux-first intelligence that preserves quality while
-                        maximizing speed. Privacy-first. No subscriptions.
+                        maximizing speed. Privacy-first and open source.
                     </p>
 
                     <!-- CTA hierarchy: Primary download, secondary link -->
@@ -63,8 +63,7 @@ import { ArrowRight, ChevronRight } from 'lucide-vue-next';
 
                     <!-- Trust line with SEO-truthful messaging -->
                     <p class="mt-6 text-sm text-muted-foreground/70">
-                        Free download. Paid license required to use. Files stay
-                        on your Mac.
+                        Free and open source. Files stay on your Mac.
                     </p>
                 </div>
             </AnimatedSection>

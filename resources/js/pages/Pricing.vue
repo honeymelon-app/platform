@@ -10,7 +10,7 @@ onMounted(() => {
 <template>
     <div class="flex min-h-screen items-center justify-center bg-background">
         <div class="text-center">
-            <p class="text-muted-foreground">Redirecting to pricing...</p>
+            <p class="text-muted-foreground">Redirecting to open source...</p>
         </div>
     </div>
 </template>

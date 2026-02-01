@@ -17,7 +17,7 @@ class FaqSeeder extends Seeder
         $faqs = [
             [
                 'question' => 'Is Honeymelon free?',
-                'answer' => 'Honeymelon is free to download. A paid license is required to use the app. The license is a one-time purchase with no subscriptions.',
+                'answer' => 'Yes. Honeymelon is free and open source, with all features available at no cost.',
                 'order' => 1,
             ],
             [
@@ -27,7 +27,7 @@ class FaqSeeder extends Seeder
             ],
             [
                 'question' => 'Does Honeymelon work offline?',
-                'answer' => 'Yes. Honeymelon requires a one-time internet connection to activate your license. After that, the app runs fully offline—no telemetry, no license checks, nothing.',
+                'answer' => 'Yes. Honeymelon works fully offline with no activation or license checks.',
                 'order' => 3,
             ],
             [
@@ -41,8 +41,8 @@ class FaqSeeder extends Seeder
                 'order' => 5,
             ],
             [
-                'question' => 'Can I use my license on multiple Macs?',
-                'answer' => "Each license activates on one Mac device. The activation is one-time and cannot be transferred. If you need Honeymelon on multiple Macs, you'll need a separate license for each.",
+                'question' => 'How can I contribute?',
+                'answer' => 'You can report issues, request features, or contribute code through the Honeymelon GitHub repository.',
                 'order' => 6,
             ],
         ];

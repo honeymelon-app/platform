@@ -11,7 +11,12 @@ const proofPoints = [
     {
         title: 'Privacy-first architecture',
         description:
-            'Your files never leave your machine. One-time activation, then fully offline forever.',
+            'Your files never leave your machine. Fully offline from day one.',
+    },
+    {
+        title: 'Open-source community',
+        description:
+            'Transparent development on GitHub with community feedback and contributions.',
     },
     {
         title: 'Remux-first intelligence',

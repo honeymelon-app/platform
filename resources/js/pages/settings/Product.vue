@@ -317,9 +317,10 @@ const previewFromStripe = () => {
                                 >Product is active</Label
                             >
                         </div>
-                        <p class="mt-1 text-xs text-muted-foreground">
-                            Inactive products cannot be purchased
-                        </p>
+                            <p class="mt-1 text-xs text-muted-foreground">
+                                Inactive products are hidden from the public
+                                site.
+                            </p>
                         <InputError :message="form.errors.is_active" />
                     </div>
 

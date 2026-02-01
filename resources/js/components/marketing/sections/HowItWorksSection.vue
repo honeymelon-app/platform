@@ -36,7 +36,7 @@ const steps = [
                     <p
                         class="mx-auto mt-4 max-w-xl text-lg text-muted-foreground"
                     >
-                        Three steps. That's it.
+                        Three steps. Open-source simplicity.
                     </p>
                 </div>
             </AnimatedSection>

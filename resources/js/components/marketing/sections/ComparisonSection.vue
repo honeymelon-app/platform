@@ -3,7 +3,7 @@ import AnimatedSection from '@/components/marketing/AnimatedSection.vue';
 import { Check, X } from 'lucide-vue-next';
 
 const comparisonFeatures = [
-    { feature: 'One-time purchase', us: true, them: false },
+    { feature: 'Free & open source', us: true, them: false },
     { feature: 'Works fully offline', us: true, them: false },
     { feature: 'No data collection', us: true, them: false },
     { feature: 'Native Apple Silicon', us: true, them: false },
@@ -21,7 +21,7 @@ const comparisonFeatures = [
                         The Honeymelon Difference
                     </h2>
                     <p class="mt-4 text-lg text-muted-foreground">
-                        How we compare to subscription-based alternatives.
+                        How we compare to closed-source alternatives.
                     </p>
                 </div>
             </AnimatedSection>

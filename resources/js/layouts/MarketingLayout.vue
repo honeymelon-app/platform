@@ -55,7 +55,7 @@ onUnmounted(() => {
                             <a href="/#features">Features</a>
                         </Button>
                         <Button as-child variant="ghost" size="sm">
-                            <a href="/#pricing">Pricing</a>
+                            <a href="/#pricing">Open Source</a>
                         </Button>
                         <Button as-child variant="ghost" size="sm">
                             <a
@@ -109,7 +109,7 @@ onUnmounted(() => {
                                         variant="ghost"
                                         class="justify-start"
                                     >
-                                        <a href="/#pricing">Pricing</a>
+                                        <a href="/#pricing">Open Source</a>
                                     </Button>
                                     <Button
                                         as-child
@@ -199,7 +199,7 @@ onUnmounted(() => {
                                     href="/#pricing"
                                     class="text-muted-foreground transition-colors hover:text-foreground"
                                 >
-                                    Pricing
+                                    Open Source
                                 </a>
                             </li>
                             <li>

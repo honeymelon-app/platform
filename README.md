@@ -1,6 +1,6 @@
 # 🍈 Honeymelon Platform
 
-Control plane for Honeymelon: marketing pages, update manifests for the Tauri app, license-gated downloads, payment webhooks, and release administration. Single app, low cost, Cloudflare in front, GitHub Releases for artifacts. Optional R2/S3 when bandwidth grows.
+Control plane for Honeymelon: marketing pages, update manifests for the Tauri app, public downloads, release administration, and community support. Single app, low cost, Cloudflare in front, GitHub Releases for artifacts. Optional R2/S3 when bandwidth grows.
 
 ## Tech Stack
 
@@ -27,7 +27,7 @@ Control plane for Honeymelon: marketing pages, update manifests for the Tauri ap
 - [Client (Tauri) Configuration](#client-tauri-configuration)
 - [Requirements](#requirements)
 - [Setup](#setup)
-  - [Issuing Licenses](#issuing-licenses)
+  - [Legacy License Tools](#legacy-license-tools)
   - [.env Template](#env-template)
 - [Release Workflow](#release-workflow)
   - [Option 1: GitHub Webhook (Automatic)](#option-1-github-webhook-automatic)
@@ -51,9 +51,8 @@ Control plane for Honeymelon: marketing pages, update manifests for the Tauri ap
 ## Features
 
 - **Auto-updater API** for Tauri with channel support (stable/beta/alpha/rc)
-- **License-gated downloads** with 302 redirects to GitHub assets or signed R2/S3 URLs
-  - Offline validation (licenses embed allowed major version)
-  - Device activation tracking
+- **Public downloads** with 302 redirects to GitHub assets or signed R2/S3 URLs
+  - No account required for download
   - No phone-home required after download
 - **Release Management**
   - Multi-product support
@@ -61,12 +60,12 @@ Control plane for Honeymelon: marketing pages, update manifests for the Tauri ap
   - Auto-sync from GitHub Releases (fetches real commit SHAs)
   - Manual and webhook-triggered publishing
   - Release notes with Markdown support
-- **Payment Integration**
-  - Stripe webhook handling for orders and licenses
-  - Automatic license issuance on successful payment
+- **Community + Release Automation**
+  - GitHub release webhook handling
+  - Automatic artifact and release sync
 - **Admin Dashboard**
-  - Release, artifact, license, and order management
-  - Analytics (downloads, page visits, revenue)
+  - Release and artifact management
+  - Analytics (downloads, page visits)
   - Built with Inertia.js and Vue 3
 - **SEO & Marketing**
   - Server-side rendering support
@@ -89,15 +88,13 @@ Laravel "platform" (PHP 8.5 + Laravel 12)
 │  ├─ Marketing pages with SSR
 │  └─ Admin dashboard
 ├─ API
-│  ├─ Downloads (license-gated)
-│  ├─ License activation
+│  ├─ Downloads (public)
 │  └─ Artifact upload (CI)
 ├─ Webhooks
-│  ├─ Stripe (payments → licenses)
 │  └─ GitHub (release → sync)
 └─ Background Jobs
    ├─ GitHub release sync (hourly)
-   └─ Stripe product sync (daily)
+    └─ Stripe product sync (legacy, optional)
 │
 ├─ GitHub Releases (primary artifacts)
 └─ R2/S3 (optional, configured)
@@ -106,13 +103,11 @@ Laravel "platform" (PHP 8.5 + Laravel 12)
 
 ## Data Model
 
-- **products**: `name`, `slug`, `stripe_product_id`, `stripe_price_id`, `price_cents`, `is_active`
+- **products**: `name`, `slug`, `is_active`
 - **releases**: `product_id`, `version`, `tag`, `commit_hash`, `channel` (`stable|beta|alpha|rc`), `notes`, `published_at`, `is_downloadable`, `major`
 - **artifacts**: `release_id`, `platform` (e.g., `darwin-aarch64`), `source` (`github|r2|s3`), `url`, `path`, `filename`, `sha256`, `signature`, `size`, `notarized`
-- **licenses**: `product_id`, `order_id`, `key`, `key_plain`, `status` (`active|revoked`), `max_major_version`, `can_access_prereleases`, `device_id`, `activated_at`, `activation_count`
-- **orders**: `product_id`, `provider` (`stripe|manual`), `stripe_checkout_id`, `amount_cents`, `currency`, `customer_email`, `status`
-- **webhook_events**: `provider` (`stripe|github`), `type`, `payload`, `processed_at`
-- **downloads**: `license_id`, `artifact_id`, `ip_address`, `user_agent`, `downloaded_at`
+- **webhook_events**: `provider` (`github`), `type`, `payload`, `processed_at`
+- **downloads**: `artifact_id`, `ip_address`, `user_agent`, `downloaded_at`
 - **page_visits**: `url`, `referrer`, `user_agent`, `ip_address`, `visited_at`
 
 ## API
@@ -120,26 +115,17 @@ Laravel "platform" (PHP 8.5 + Laravel 12)
 ### Public Endpoints
 
 ```bash
-# License-gated download
-GET /api/download?license=XXXX-XXXX&artifact=uuid
+# Public download
+GET /api/download?artifact=uuid
 → 302 redirect to GitHub asset or signed R2/S3 URL
 
-# License activation (device tracking)
+# License activation endpoint (no longer used for the open-source app)
 POST /api/licenses/activate
-Body: { "license_key": "XXXX-XXXX", "device_id": "..." }
-
-# Stripe checkout session
-POST /api/checkout
-Body: { "product_id": "uuid", "success_url": "...", "cancel_url": "..." }
 ```
 
 ### Webhooks
 
 ```bash
-# Stripe webhook (payment events)
-POST /api/webhooks/stripe
-→ Creates orders and issues licenses automatically
-
 # GitHub release webhook (requires client auth)
 POST /api/webhooks/github/release
 Body: GitHub release webhook payload
@@ -161,8 +147,8 @@ All admin routes require authentication via Laravel Fortify:
 
 - `/admin` - Dashboard with analytics
 - `/admin/releases` - Release management
-- `/admin/licenses` - License management
-- `/admin/orders` - Order management
+- `/admin/licenses` - Legacy license management (if needed for historical data)
+- `/admin/orders` - Legacy order management (if needed for historical data)
 - `/admin/artifacts` - Artifact management
 
 ## Client (Tauri) Configuration
@@ -191,9 +177,7 @@ Supported channels: `stable`, `beta`, `alpha`, `rc`
 - Redis (cache/queue/sessions)
 - Database: PostgreSQL or MySQL (SQLite for development)
 - GitHub personal access token with `repo` scope
-- Stripe account and webhook secret
 - Optional: Cloudflare R2 or AWS S3 for artifact storage
-- Optional: Mail provider (SES/SMTP) for license emails
 
 ## Setup
 
@@ -220,32 +204,10 @@ php artisan client:generate
 composer run dev  # Runs both Laravel and Vite
 ```
 
-### Issuing Licenses
+### Legacy License Tools
 
-First, generate Ed25519 signing keys:
-
-```bash
-php artisan license:generate-keys
-# Copy the output to LICENSE_SIGNING_PUBLIC_KEY and LICENSE_SIGNING_PRIVATE_KEY in .env
-```
-
-Then issue licenses:
-
-```bash
-# Issue a license for a specific order
-php artisan license:issue {order-uuid} --major=1
-
-# Create a manual order and license in one step
-php artisan license:issue --email=customer@example.com --major=1 --json
-```
-
-License features:
-
-- **Offline validation**: Licenses are cryptographically signed and validated client-side
-- **Major version locking**: Each license specifies the maximum major version (e.g., 1 = all 1.x releases)
-- **Device activation tracking**: Optional tracking of device IDs for seat management
-- **Prerelease access**: Can be toggled per license for beta/alpha access
-- **No phone-home**: After initial download, no server communication required
+The platform still contains license tooling for historical data. These tools are
+optional and not required for the open-source app.
 
 ### .env Template
 
@@ -273,15 +235,6 @@ GITHUB_TOKEN=ghp_...
 GITHUB_OWNER=honeymelon-app
 GITHUB_REPO=app-macos
 
-# Stripe
-STRIPE_KEY=pk_...
-STRIPE_SECRET=sk_...
-STRIPE_WEBHOOK_SECRET=whsec_...
-
-# License Signing (generate with: php artisan license:generate-keys)
-LICENSE_SIGNING_PUBLIC_KEY=...
-LICENSE_SIGNING_PRIVATE_KEY=...
-
 # Optional: Cloudflare R2 / AWS S3
 FILESYSTEM_DISK=local
 R2_ENDPOINT=https://<account>.r2.cloudflarestorage.com
@@ -289,11 +242,6 @@ R2_BUCKET=honeymelon-artifacts
 R2_KEY=...
 R2_SECRET=...
 R2_PUBLIC_URL=https://cdn.honeymelon.app
-
-# Optional: Mail
-MAIL_MAILER=smtp
-MAIL_FROM_ADDRESS=support@honeymelon.app
-MAIL_FROM_NAME=Honeymelon
 
 # Inertia SSR (optional, for better SEO)
 INERTIA_SSR_ENABLED=true
@@ -352,7 +300,7 @@ Built with Inertia.js and Vue 3, featuring:
 
 - Download analytics (last 7 days, with sparkline)
 - Revenue tracking
-- Recent orders and licenses
+- Recent releases and downloads
 - Quick stats
 
 **Release Management** (`/admin/releases`)
@@ -365,16 +313,11 @@ Built with Inertia.js and Vue 3, featuring:
 
 **License Management** (`/admin/licenses`)
 
-- View all licenses with status and activation info
-- Issue new licenses
-- Revoke licenses
-- Track device activations
+- Legacy license records for historical customers
 
 **Order Management** (`/admin/orders`)
 
-- View all orders from Stripe and manual sources
-- See associated licenses
-- Track payment status
+- Legacy order records for historical purchases
 
 **Artifact Management** (`/admin/artifacts`)
 
@@ -396,12 +339,12 @@ All routes use Wayfinder for type-safe navigation and are protected by Laravel F
 ## Security
 
 - Use signed routes or basic auth over HTTPS for `/api/admin/*`.
-- Verify webhook signatures (Lemon Squeezy and Stripe).
+- Verify webhook signatures for GitHub release automation.
 - Store secrets in GitHub Actions or your secret manager.
 - Redact license keys and PII in logs.
 - If using R2/S3, generate short-lived signed URLs only.
 - **Rate limiting** is enforced on all public API endpoints:
-  - Downloads: 10 requests/min per IP+license combination
+  - Downloads: 10 requests/min per IP
   - General API: 60 requests/min per IP
   - Customize limits in `bootstrap/app.php` if needed
 
@@ -453,14 +396,14 @@ The platform includes scheduled tasks for keeping data in sync. Add the Laravel 
 | Command                | Frequency | Description                                                   |
 | ---------------------- | --------- | ------------------------------------------------------------- |
 | `github:sync-releases` | Hourly    | Syncs releases and artifacts from GitHub, fetches commit SHAs |
-| `stripe:sync`          | Daily     | Syncs product and price details from Stripe                   |
+| `stripe:sync`          | Daily     | Legacy Stripe sync (optional)                                 |
 
 View the schedule with `php artisan schedule:list`.
 
 ### Available Artisan Commands
 
 ```bash
-# License Management
+# License Management (legacy)
 php artisan license:generate-keys      # Generate Ed25519 signing keys
 php artisan license:issue              # Issue a new license
 
@@ -471,20 +414,20 @@ php artisan token:personal             # Generate personal access token
 # GitHub Sync
 php artisan github:sync-releases       # Manually sync releases from GitHub
 
-# Stripe
+# Stripe (legacy)
 php artisan stripe:sync                # Sync products and prices from Stripe
 ```
 
 ## Roadmap
 
 - R2/S3 artifact storage with signed downloads (configured)
-- Device activation tracking (implemented)
-- Stripe integration (implemented)
+- Device activation tracking (legacy)
+- Stripe integration (legacy)
 - GitHub release sync with commit SHA resolution (implemented)
 - Multi-channel support (stable/beta/alpha/rc)
 - Admin dashboard with analytics
-- Rate limiting for download endpoints (10 requests/min per IP+license)
-- Email notifications for license issuance
+- Rate limiting for download endpoints (10 requests/min per IP)
+- Email notifications for release updates
 - Public metrics page (downloads, version distribution)
 - SBOM and provenance attachment to releases
 - Webhook retry mechanism

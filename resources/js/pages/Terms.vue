@@ -10,7 +10,7 @@ import { Head } from '@inertiajs/vue3';
 const { headTags } = useSeoMeta({
     title: 'Terms of Use - Honeymelon',
     description:
-        'Terms of use for Honeymelon macOS media converter. One-time purchase, lifetime license for v1.x updates, 30-day money-back guarantee.',
+        'Terms of use for Honeymelon macOS media converter. Open-source, free to use, and community maintained.',
     canonical: '/terms',
     ogType: 'article',
 });
@@ -40,7 +40,7 @@ const { headTags } = useSeoMeta({
     <MarketingLayout>
         <ContentSection
             title="Terms of Use"
-            subtitle="Last updated: January 2025"
+            subtitle="Last updated: February 2026"
         >
             <Card>
                 <CardContent
@@ -62,134 +62,59 @@ const { headTags } = useSeoMeta({
                     <Separator />
 
                     <section>
-                        <h2 class="mb-4 text-2xl font-bold">License Grant</h2>
-                        <p
-                            class="mb-4 text-base leading-relaxed text-muted-foreground"
-                        >
-                            Subject to your compliance with these terms, we
-                            grant you a limited, non-exclusive,
-                            non-transferable, revocable license to:
-                        </p>
-                        <ul class="space-y-2 text-base text-muted-foreground">
-                            <li>
-                                Download and install Honeymelon on Mac devices
-                                you own or control
-                            </li>
-                            <li>
-                                Use Honeymelon for personal or commercial media
-                                conversion purposes
-                            </li>
-                            <li>
-                                Receive updates and support according to your
-                                license type
-                            </li>
-                        </ul>
-                    </section>
-
-                    <Separator />
-
-                    <section>
-                        <h2 class="mb-4 text-2xl font-bold">License Details</h2>
-
-                        <div class="mb-6">
-                            <h3 class="mb-2 text-xl font-semibold">
-                                Lifetime License - $29 USD
-                            </h3>
-                            <ul
-                                class="space-y-2 text-base text-muted-foreground"
-                            >
-                                <li>Valid for one (1) user</li>
-                                <li>
-                                    One-time activation on a single Mac device
-                                    (cannot be transferred)
-                                </li>
-                                <li>
-                                    Includes all updates within the major
-                                    version purchased (v1.x)
-                                </li>
-                                <li>One-time payment, no recurring fees</li>
-                                <li>
-                                    30-day money-back guarantee, no questions
-                                    asked
-                                </li>
-                            </ul>
-                        </div>
-                    </section>
-
-                    <Separator />
-
-                    <section>
                         <h2 class="mb-4 text-2xl font-bold">
-                            License Activation
+                            Open Source License
                         </h2>
                         <p
-                            class="mb-4 text-base leading-relaxed text-muted-foreground"
+                            class="text-base leading-relaxed text-muted-foreground"
                         >
-                            Honeymelon requires a one-time online activation:
+                            Honeymelon is distributed as open-source software.
+                            Your use of the app and the source code is governed
+                            by the applicable open-source license published in
+                            the GitHub repository. The license terms grant you
+                            the rights to use, modify, and distribute the
+                            software according to that license.
                         </p>
-                        <ul class="space-y-2 text-base text-muted-foreground">
-                            <li>
-                                <strong>Internet Required Once:</strong> An
-                                internet connection is required to activate your
-                                license after purchase
-                            </li>
-                            <li>
-                                <strong>Offline After Activation:</strong> After
-                                successful activation, Honeymelon runs fully
-                                offline with no further network requirements
-                            </li>
-                            <li>
-                                <strong>One-Time Activation:</strong> Each
-                                license key can only be activated once; this
-                                cannot be reset or transferred
-                            </li>
-                            <li>
-                                <strong>No Remote Deactivation:</strong> We do
-                                not remotely disable or revoke activated
-                                installations
-                            </li>
-                        </ul>
                     </section>
 
                     <Separator />
 
                     <section>
-                        <h2 class="mb-4 text-2xl font-bold">Restrictions</h2>
+                        <h2 class="mb-4 text-2xl font-bold">Pricing</h2>
                         <p
-                            class="mb-4 text-base leading-relaxed text-muted-foreground"
+                            class="text-base leading-relaxed text-muted-foreground"
                         >
-                            You may not:
+                            Honeymelon is free to download and use. There are no
+                            subscriptions, license keys, or payments required to
+                            access the full feature set.
                         </p>
-                        <ul class="space-y-2 text-base text-muted-foreground">
-                            <li>
-                                Reverse engineer, decompile, or disassemble the
-                                software
-                            </li>
-                            <li>
-                                Modify, adapt, or create derivative works of the
-                                software
-                            </li>
-                            <li>
-                                Remove or alter any proprietary notices or
-                                labels
-                            </li>
-                            <li>
-                                Share, sell, rent, lease, or distribute your
-                                license key
-                            </li>
-                            <li>
-                                Use the software for illegal purposes or to
-                                process illegal content
-                            </li>
-                            <li>
-                                Exceed the device or user limits of your license
-                                type
-                            </li>
-                            <li>
-                                Use the software to infringe on third-party
-                                copyrights or intellectual property
-                            </li>
-                        </ul>
+                    </section>
+
+                    <Separator />
+
+                    <section>
+                        <h2 class="mb-4 text-2xl font-bold">Activation</h2>
+                        <p
+                            class="text-base leading-relaxed text-muted-foreground"
+                        >
+                            Honeymelon does not require license activation. The
+                            app works fully offline with no activation checks or
+                            recurring network requirements.
+                        </p>
+                    </section>
+
+                    <Separator />
+
+                    <section>
+                        <h2 class="mb-4 text-2xl font-bold">Acceptable Use</h2>
+                        <p
+                            class="text-base leading-relaxed text-muted-foreground"
+                        >
+                            You agree to use Honeymelon responsibly and in
+                            compliance with applicable laws. You are solely
+                            responsible for ensuring you have the rights to
+                            process any content you convert.
+                        </p>
                     </section>
 
                     <Separator />
@@ -254,50 +179,13 @@ const { headTags } = useSeoMeta({
                     <Separator />
 
                     <section>
-                        <h2 class="mb-4 text-2xl font-bold">Refund Policy</h2>
+                        <h2 class="mb-4 text-2xl font-bold">Payments</h2>
                         <p
-                            class="mb-4 text-base leading-relaxed text-muted-foreground"
+                            class="text-base leading-relaxed text-muted-foreground"
                         >
-                            We offer a 30-day money-back guarantee. If you're
-                            not satisfied with Honeymelon, contact us within 30
-                            days of purchase for a full refund.
-                        </p>
-                        <p
-                            class="mb-4 text-base leading-relaxed text-muted-foreground"
-                        >
-                            <strong>Important:</strong> Because license keys can
-                            only be activated once, refunds are only available
-                            for licenses that have not yet been activated, or
-                            within the 30-day refund window. We cannot reissue
-                            or reset activated licenses.
-                        </p>
-                        <p
-                            class="mb-4 text-base leading-relaxed text-muted-foreground"
-                        >
-                            <strong>Activated License Refunds:</strong> If you
-                            request a refund after activating your license, we
-                            will process the refund, but please note that the
-                            activated copy will continue to function—we do not
-                            remotely disable activated installations. Your
-                            license will be marked as refunded and cannot be
-                            re-activated on another device.
-                        </p>
-                        <p
-                            class="mb-4 text-base leading-relaxed text-muted-foreground"
-                        >
-                            Refund requests must include:
-                        </p>
-                        <ul class="space-y-2 text-base text-muted-foreground">
-                            <li>Your purchase email and license key</li>
-                            <li>
-                                Brief explanation of why you're requesting a
-                                refund
-                            </li>
-                        </ul>
-                        <p
-                            class="mt-4 text-base leading-relaxed text-muted-foreground"
-                        >
-                            Refunds are processed within 5-7 business days.
+                            Honeymelon does not process payments or sell
+                            licenses. If we offer optional services in the
+                            future, they will be described separately.
                         </p>
                     </section>
 
@@ -335,7 +223,7 @@ const { headTags } = useSeoMeta({
                             INDIRECTLY, OR ANY LOSS OF DATA, USE, GOODWILL, OR
                             OTHER INTANGIBLE LOSSES RESULTING FROM YOUR USE OF
                             HONEYMELON. OUR TOTAL LIABILITY SHALL NOT EXCEED THE
-                            AMOUNT YOU PAID FOR YOUR LICENSE.
+                            AMOUNT YOU PAID FOR OPTIONAL SERVICES, IF ANY.
                         </p>
                     </section>
 
@@ -348,11 +236,10 @@ const { headTags } = useSeoMeta({
                         <p
                             class="text-base leading-relaxed text-muted-foreground"
                         >
-                            We may release updates, bug fixes, and new versions
-                            of Honeymelon. Updates are provided according to
-                            your license type. We reserve the right to
-                            discontinue support for older versions. Support is
-                            provided via email on a best-effort basis.
+                            Updates are released publicly through the open
+                            source repository. Support is provided through
+                            community channels and documentation on a best-effort
+                            basis.
                         </p>
                     </section>
 
@@ -363,11 +250,9 @@ const { headTags } = useSeoMeta({
                         <p
                             class="text-base leading-relaxed text-muted-foreground"
                         >
-                            We may terminate your license if you violate these
-                            terms. Upon termination, you must cease using
-                            Honeymelon and delete all copies from your devices.
-                            Termination does not entitle you to a refund unless
-                            required by law.
+                            We may restrict access to hosted services if you
+                            violate these terms. Open-source license rights are
+                            governed by the applicable license.
                         </p>
                     </section>
 
@@ -380,11 +265,9 @@ const { headTags } = useSeoMeta({
                         <p
                             class="text-base leading-relaxed text-muted-foreground"
                         >
-                            We reserve the right to modify these terms at any
-                            time. Material changes will be communicated via
-                            email to license holders. Continued use of
-                            Honeymelon after changes constitutes acceptance of
-                            the new terms.
+                            We may update these terms as the project evolves.
+                            Material changes will be posted on this page and in
+                            the open-source repository.
                         </p>
                     </section>
 

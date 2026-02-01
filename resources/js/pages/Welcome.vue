@@ -37,14 +37,8 @@ const appUrl = computed(() => (page.props.appUrl as string) || '');
 // Use FAQs from props or fallback to empty array
 const faqs = computed(() => props.faqs || []);
 
-// Generate price for structured data
-const priceData = computed(() => {
-    if (!props.product) return undefined;
-    return {
-        price: props.product.price_cents / 100,
-        priceCurrency: props.product.currency?.toUpperCase() || 'USD',
-    };
-});
+// Open source: no price data for structured data
+const priceData = computed(() => undefined);
 
 // Generate JSON-LD structured data
 const jsonLdSchemas = computed(() => {
@@ -55,7 +49,7 @@ const jsonLdSchemas = computed(() => {
         generateSoftwareApplicationSchema({
             name: 'Honeymelon',
             description:
-                'Native macOS media converter for Apple Silicon. Free download, paid license required to use. Convert video, audio, and images offline with remux-first intelligence.',
+                'Native macOS media converter for Apple Silicon. Free and open source. Convert video, audio, and images offline with remux-first intelligence.',
             operatingSystem: 'macOS',
             applicationCategory: 'MultimediaApplication',
             url: appUrl.value,
@@ -83,7 +77,7 @@ const jsonLdSchemas = computed(() => {
 const { headTags, jsonLdScript } = useSeoMeta({
     title: 'Honeymelon – Smart Media Converter for macOS',
     description:
-        'Native macOS media converter for Apple Silicon. Free download, paid license required. Convert video, audio, and images with remux-first intelligence. No subscriptions, files stay local.',
+        'Native macOS media converter for Apple Silicon. Free and open source. Convert video, audio, and images with remux-first intelligence. No subscriptions, files stay local.',
     canonical: '/',
     ogImage: '/images/og-image.png',
     jsonLd: jsonLdSchemas,

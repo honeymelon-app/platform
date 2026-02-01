@@ -10,7 +10,7 @@ import { Head } from '@inertiajs/vue3';
 const { headTags } = useSeoMeta({
     title: 'Privacy Policy - Honeymelon',
     description:
-        'Privacy policy for Honeymelon macOS media converter. We collect zero telemetry or usage data. Your files never leave your device.',
+        'Privacy policy for Honeymelon macOS media converter. Open-source app with zero telemetry or usage data. Your files never leave your device.',
     canonical: '/privacy',
     ogType: 'article',
 });
@@ -40,7 +40,7 @@ const { headTags } = useSeoMeta({
     <MarketingLayout>
         <ContentSection
             title="Privacy Policy"
-            subtitle="Last updated: January 2025"
+            subtitle="Last updated: February 2026"
         >
             <Card>
                 <CardContent
@@ -70,9 +70,8 @@ const { headTags } = useSeoMeta({
                         <p
                             class="mb-4 text-base leading-relaxed text-muted-foreground"
                         >
-                            After your one-time license activation, Honeymelon
-                            operates entirely offline on your Mac. We do not
-                            collect, transmit, or store:
+                            Honeymelon operates entirely offline on your Mac. We
+                            do not collect, transmit, or store:
                         </p>
                         <ul class="space-y-2 text-base text-muted-foreground">
                             <li>Your media files or their contents</li>
@@ -100,55 +99,9 @@ const { headTags } = useSeoMeta({
                         <p
                             class="text-base leading-relaxed text-muted-foreground"
                         >
-                            <strong>One-Time Online Activation:</strong>
-                            Honeymelon requires a one-time internet connection
-                            to activate your license. After successful
-                            activation, the app runs fully offline with no
-                            further network calls for licensing, telemetry, or
-                            any other purpose.
-                        </p>
-                    </section>
-
-                    <Separator />
-
-                    <section>
-                        <h2 class="mb-4 text-2xl font-bold">
-                            License Activation Data
-                        </h2>
-                        <p
-                            class="mb-4 text-base leading-relaxed text-muted-foreground"
-                        >
-                            During the one-time license activation, the
-                            following minimal data is transmitted:
-                        </p>
-                        <ul class="space-y-2 text-base text-muted-foreground">
-                            <li>
-                                <strong>License Key:</strong> Your purchased
-                                license key for validation
-                            </li>
-                            <li>
-                                <strong>App Version:</strong> The version of
-                                Honeymelon being activated
-                            </li>
-                            <li>
-                                <strong>Device Identifier:</strong> A random,
-                                privacy-respecting identifier (not derived from
-                                hardware) used solely for one-time activation
-                            </li>
-                            <li>
-                                <strong>IP Address:</strong> Logged
-                                automatically by our servers as part of the HTTP
-                                request (standard web traffic)
-                            </li>
-                        </ul>
-                        <p
-                            class="mt-4 text-base leading-relaxed text-muted-foreground"
-                        >
-                            <strong>Important:</strong> After activation, the
-                            app stores a local activation token and never
-                            contacts our servers again. We do not perform
-                            periodic license checks, send usage data, or collect
-                            any telemetry.
+                            Honeymelon does not require license activation or
+                            recurring network calls. All processing happens
+                            locally on your device.
                         </p>
                     </section>
 
@@ -159,23 +112,11 @@ const { headTags } = useSeoMeta({
                             Third-Party Services
                         </h2>
                         <p
-                            class="mb-4 text-base leading-relaxed text-muted-foreground"
+                            class="text-base leading-relaxed text-muted-foreground"
                         >
-                            We use the following third-party services:
-                        </p>
-                        <ul class="space-y-2 text-base text-muted-foreground">
-                            <li>
-                                <strong>Stripe:</strong> Payment processing for
-                                license purchases (subject to Stripe's Privacy
-                                Policy)
-                            </li>
-                        </ul>
-                        <p
-                            class="mt-4 text-base leading-relaxed text-muted-foreground"
-                        >
-                            Stripe may collect payment information necessary to
-                            process transactions. We do not store credit card
-                            information on our servers.
+                            We do not use third-party payment processors for the
+                            core app. If optional services are offered in the
+                            future, we will update this section accordingly.
                         </p>
                     </section>
 
@@ -188,8 +129,8 @@ const { headTags } = useSeoMeta({
                         >
                             Our website uses minimal essential cookies for
                             authentication and session management if you log in
-                            to manage your licenses. We do not use tracking
-                            cookies or third-party advertising cookies.
+                            to manage the admin dashboard. We do not use
+                            tracking cookies or third-party advertising cookies.
                         </p>
                     </section>
 
@@ -221,15 +162,15 @@ const { headTags } = useSeoMeta({
                         <ul class="space-y-2 text-base text-muted-foreground">
                             <li>
                                 <strong>Access:</strong> Contact us to request
-                                any data we have associated with your license
+                                any data we have about you in the admin system
                             </li>
                             <li>
                                 <strong>Deletion:</strong> Request deletion of
-                                your license and associated data at any time
+                                your account data at any time
                             </li>
                             <li>
                                 <strong>Portability:</strong> Request export of
-                                your license information
+                                any personal data we store
                             </li>
                         </ul>
                     </section>
@@ -262,7 +203,7 @@ const { headTags } = useSeoMeta({
                             We may update this privacy policy from time to time.
                             We will notify users of any material changes by
                             updating the "Last updated" date at the top of this
-                            policy and, for active license holders, via email.
+                            policy and, for admin users, via email when needed.
                         </p>
                     </section>
 

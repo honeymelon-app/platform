@@ -219,7 +219,8 @@ import { Check } from 'lucide-vue-next';
                         </h3>
                         <p class="mt-4 text-lg text-muted-foreground">
                             Use Honeymelon in your preferred language. Built
-                            with internationalization in mind from day one.
+                            with internationalization and open-source
+                            contributions in mind.
                         </p>
                         <ul class="mt-6 space-y-3">
                             <li

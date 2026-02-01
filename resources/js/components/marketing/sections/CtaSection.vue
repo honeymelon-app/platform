@@ -17,7 +17,7 @@ import { ArrowRight } from 'lucide-vue-next';
                 </h2>
                 <p class="mt-6 text-lg text-muted-foreground">
                     Download Honeymelon and experience intelligent,
-                    privacy-first media conversion on your Mac.
+                    open-source media conversion on your Mac.
                 </p>
                 <div
                     class="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
@@ -34,7 +34,13 @@ import { ArrowRight } from 'lucide-vue-next';
                         size="lg"
                         class="h-12 text-base text-muted-foreground"
                     >
-                        <a href="#pricing">View Pricing</a>
+                        <a
+                            href="https://github.com/honeymelon-app/honeymelon"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            View the source
+                        </a>
                     </Button>
                 </div>
             </AnimatedSection>

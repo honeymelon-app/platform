@@ -943,7 +943,7 @@ function getDeviceIcon(device: string) {
                         </div>
                         <h3 class="mt-4 font-medium">Licenses</h3>
                         <p class="mt-1 text-sm text-muted-foreground">
-                            Manage license keys and activations
+                            Review legacy license keys and activations
                         </p>
                     </Link>
 

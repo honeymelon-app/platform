@@ -252,7 +252,7 @@ interface SeoMetaOptions {
 ## JSON-LD Schema Helpers
 
 ### generateSoftwareApplicationSchema
-For the main product page. Includes pricing, OS, category.
+For the main product page. Includes OS, category, and optional pricing data.
 
 ### generateOrganizationSchema
 For company/about pages. Includes name, URL, logo, social profiles.

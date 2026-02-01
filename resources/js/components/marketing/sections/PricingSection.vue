@@ -2,74 +2,21 @@
 import AnimatedSection from '@/components/marketing/AnimatedSection.vue';
 import Button from '@/components/ui/button/Button.vue';
 import type { Product } from '@/types/api';
-import { ArrowRight, Check, Loader2 } from 'lucide-vue-next';
-import { computed, ref } from 'vue';
+import { ArrowRight, Check, Github } from 'lucide-vue-next';
 
-const props = defineProps<{
+defineProps<{
     product?: Product | null;
 }>();
 
-const isCheckingOut = ref(false);
-const checkoutError = ref<string | null>(null);
-
-const displayPrice = computed(() => {
-    if (!props.product) {
-        return '$29';
-    }
-    const dollars = Math.floor(props.product.price_cents / 100);
-    return `$${dollars}`;
-});
-
-const displayCurrency = computed(() => {
-    return props.product?.currency?.toUpperCase() ?? 'USD';
-});
-
-async function startCheckout(): Promise<void> {
-    if (isCheckingOut.value || !props.product) return;
-
-    isCheckingOut.value = true;
-    checkoutError.value = null;
-
-    try {
-        const response = await fetch('/api/checkout', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                Accept: 'application/json',
-            },
-            body: JSON.stringify({
-                provider: 'stripe',
-                product_id: props.product.id,
-                success_url: `${window.location.origin}/download?success=true`,
-                cancel_url: `${window.location.origin}/#pricing?cancelled=true`,
-            }),
-        });
-
-        if (!response.ok) {
-            throw new Error('Failed to create checkout session');
-        }
-
-        const data = await response.json();
-
-        if (data.checkout_url) {
-            window.location.href = data.checkout_url;
-        } else {
-            throw new Error('No checkout URL returned');
-        }
-    } catch (error) {
-        checkoutError.value =
-            error instanceof Error ? error.message : 'Something went wrong';
-        isCheckingOut.value = false;
-    }
-}
+const repositoryUrl = 'https://github.com/honeymelon-app/honeymelon';
 
 const features = [
-    'Lifetime license — no subscriptions',
-    'All v1.x updates included free',
+    'Free and open-source — no license keys required',
+    'Full feature set with unlimited conversions',
+    'Community-driven roadmap and contributions welcome',
     'Privacy-first, zero data collection',
-    'Works offline after one-time activation',
     'Native Apple Silicon performance',
-    'Unlimited conversions forever',
+    'Transparent development on GitHub',
 ];
 </script>
 
@@ -81,11 +28,11 @@ const features = [
                     <h2
                         class="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
                     >
-                        One Price. Forever.
+                        Free & Open Source
                     </h2>
                     <p class="mt-4 text-lg text-muted-foreground">
-                        No subscriptions. No hidden fees. Pay once, own it
-                        forever.
+                        Honeymelon is now completely free to use, with source
+                        code available to the community.
                     </p>
                 </div>
             </AnimatedSection>
@@ -96,7 +43,7 @@ const features = [
                 >
                     <div class="text-center">
                         <h3 class="text-xl font-semibold text-foreground">
-                            {{ product?.name ?? 'Honeymelon' }} License
+                            {{ product?.name ?? 'Honeymelon' }} for macOS
                         </h3>
                         <div
                             class="mt-6 flex items-baseline justify-center gap-2"
@@ -104,14 +51,14 @@ const features = [
                             <span
                                 class="text-6xl font-semibold tracking-tight text-foreground"
                             >
-                                {{ displayPrice }}
+                                Free
                             </span>
-                            <span class="text-lg text-muted-foreground">{{
-                                displayCurrency
-                            }}</span>
+                            <span class="text-lg text-muted-foreground">
+                                Open Source
+                            </span>
                         </div>
                         <p class="mt-2 text-sm text-muted-foreground">
-                            One-time payment · Lifetime access
+                            No subscriptions · No activation · No payments
                         </p>
                     </div>
 
@@ -130,35 +77,26 @@ const features = [
                         </li>
                     </ul>
 
-                    <div class="mt-10">
+                    <div class="mt-10 space-y-3">
+                        <Button as-child size="lg" class="h-12 w-full text-base">
+                            <a href="#download">
+                                Download for macOS
+                                <ArrowRight class="ml-2 h-4 w-4" />
+                            </a>
+                        </Button>
                         <Button
-                            :disabled="isCheckingOut || !product"
+                            as-child
+                            variant="outline"
                             size="lg"
                             class="h-12 w-full text-base"
-                            @click="startCheckout"
                         >
-                            <Loader2
-                                v-if="isCheckingOut"
-                                class="mr-2 h-4 w-4 animate-spin"
-                            />
-                            <template v-else>
-                                Buy {{ product?.name ?? 'Honeymelon' }}
-                                <ArrowRight class="ml-2 h-4 w-4" />
-                            </template>
+                            <a :href="repositoryUrl" target="_blank">
+                                <Github class="mr-2 h-4 w-4" />
+                                View the source on GitHub
+                            </a>
                         </Button>
-
-                        <p
-                            v-if="checkoutError"
-                            class="mt-3 text-center text-sm text-destructive"
-                        >
-                            {{ checkoutError }}
-                        </p>
-
-                        <p
-                            class="mt-4 text-center text-sm text-muted-foreground/70"
-                        >
-                            30-day money-back guarantee · Secure payment via
-                            Stripe
+                        <p class="text-center text-sm text-muted-foreground/70">
+                            Licensed for free use. Contributions are welcome.
                         </p>
                     </div>
                 </div>

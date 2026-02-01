@@ -277,7 +277,7 @@ const exportSelected = () => {
                             <AdminEmptyState
                                 icon="Receipt"
                                 title="No orders yet"
-                                description="Orders will appear here when customers make purchases."
+                                description="Orders will appear here for historical purchases."
                             />
                         </template>
                     </DataTableRoot>
