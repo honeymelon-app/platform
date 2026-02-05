@@ -1,4 +1,4 @@
-# Honeymelon Website
+# Honeymelon 🍈 | Website
 
 Marketing website for [Honeymelon](https://honeymelon.app) — the free and open source macOS media converter for Apple Silicon.
 
