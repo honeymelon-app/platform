@@ -138,11 +138,10 @@ async function fetchGitHubData(): Promise<void> {
 
         const dmgAsset = findDmgAsset(release.assets)
 
-        // Sum download counts across all assets for total downloads
-        const totalDownloads = release.assets.reduce(
-            (sum, a) => sum + a.download_count,
-            0,
-        )
+        // Count only DMG downloads (excludes .sig and update manifests)
+        const totalDownloads = release.assets
+            .filter((a) => a.name.endsWith('.dmg'))
+            .reduce((sum, a) => sum + a.download_count, 0)
 
         state.stars = repo.stargazers_count
         state.latestVersion = release.tag_name.replace(/^v/, '')
