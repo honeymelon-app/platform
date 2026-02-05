@@ -1,79 +1,259 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    --font-sans:
+        Inter, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+        'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+    --radius-lg: var(--radius);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-sm: calc(var(--radius) - 4px);
+
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+
+    --color-gray-50: var(--gray-50);
+    --color-gray-100: var(--gray-100);
+    --color-gray-200: var(--gray-200);
+    --color-gray-300: var(--gray-300);
+    --color-gray-400: var(--gray-400);
+    --color-gray-500: var(--gray-500);
+    --color-gray-600: var(--gray-600);
+    --color-gray-700: var(--gray-700);
+    --color-gray-800: var(--gray-800);
+    --color-gray-900: var(--gray-900);
+    --color-gray-950: var(--gray-950);
+
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+
+    --color-sidebar: var(--sidebar-background);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+    --animate-accordion-down: accordion-down 0.2s ease-out;
+    --animate-accordion-up: accordion-up 0.2s ease-out;
+
+    @keyframes accordion-down {
+        from {
+            height: 0;
+        }
+
+        to {
+            height: var(--reka-accordion-content-height);
+        }
+    }
+
+    @keyframes accordion-up {
+        from {
+            height: var(--reka-accordion-content-height);
+        }
+
+        to {
+            height: 0;
+        }
+    }
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+*/
+@layer base {
+
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+}
+
+@layer utilities {
+
+    body,
+    html {
+        --font-sans:
+            'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+            'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    }
+}
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    --background: hsl(0 0% 100%);
+    --foreground: hsl(30 35% 20%);
+    --card: hsl(0 0% 100%);
+    --card-foreground: hsl(30 35% 20%);
+    --popover: hsl(0 0% 100%);
+    --popover-foreground: hsl(30 35% 20%);
+    --primary: hsl(34 72% 62%);
+    --primary-foreground: hsl(0 0% 100%);
+    --secondary: hsl(42 81% 88%);
+    --secondary-foreground: hsl(30 35% 20%);
+    --muted: hsl(45 100% 95%);
+    --muted-foreground: hsl(30 20% 45%);
+    --accent: hsl(28 67% 57%);
+    --accent-foreground: hsl(0 0% 100%);
+    --destructive: hsl(0 84.2% 60.2%);
+    --destructive-foreground: hsl(0 0% 98%);
+    --border: hsl(42 65% 90%);
+    --input: hsl(42 65% 85%);
+    --ring: hsl(34 72% 62%);
+    --gray-50: hsl(34 45% 98%);
+    --gray-100: hsl(34 38% 95%);
+    --gray-200: hsl(33 30% 90%);
+    --gray-300: hsl(32 25% 85%);
+    --gray-400: hsl(32 20% 75%);
+    --gray-500: hsl(31 18% 65%);
+    --gray-600: hsl(31 16% 55%);
+    --gray-700: hsl(30 14% 45%);
+    --gray-800: hsl(29 12% 36%);
+    --gray-900: hsl(28 12% 28%);
+    --gray-950: hsl(27 10% 20%);
+    --chart-1: hsl(34 72% 62%);
+    --chart-2: hsl(55 72% 66%);
+    --chart-3: hsl(28 67% 57%);
+    --chart-4: hsl(42 81% 88%);
+    --chart-5: hsl(45 100% 95%);
+    --radius: 0.75rem;
+    --sidebar-background: hsl(45 100% 98%);
+    --sidebar-foreground: hsl(30 35% 20%);
+    --sidebar-primary: hsl(34 72% 62%);
+    --sidebar-primary-foreground: hsl(30 35% 20%);
+    --sidebar-accent: hsl(42 81% 92%);
+    --sidebar-accent-foreground: hsl(30 35% 20%);
+    --sidebar-border: hsl(42 65% 90%);
+    --sidebar-ring: hsl(34 72% 62%);
+    --sidebar: hsl(45 100% 98%);
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-.card {
-  padding: 2em;
-}
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.dark {
+    --background: hsl(30 25% 8%);
+    --foreground: hsl(45 85% 95%);
+    --card: hsl(30 20% 10%);
+    --card-foreground: hsl(45 85% 95%);
+    --popover: hsl(30 20% 10%);
+    --popover-foreground: hsl(45 85% 95%);
+    --primary: hsl(34 72% 62%);
+    --primary-foreground: hsl(0 0% 100%);
+    --secondary: hsl(28 40% 25%);
+    --secondary-foreground: hsl(45 85% 95%);
+    --muted: hsl(30 20% 15%);
+    --muted-foreground: hsl(42 30% 65%);
+    --accent: hsl(28 67% 57%);
+    --accent-foreground: hsl(0 0% 100%);
+    --destructive: hsl(0 84% 60%);
+    --destructive-foreground: hsl(0 0% 98%);
+    --border: hsl(30 20% 18%);
+    --input: hsl(30 20% 18%);
+    --ring: hsl(34 72% 62%);
+    --gray-50: hsl(33 30% 92%);
+    --gray-100: hsl(32 26% 86%);
+    --gray-200: hsl(31 24% 78%);
+    --gray-300: hsl(31 20% 68%);
+    --gray-400: hsl(30 18% 58%);
+    --gray-500: hsl(30 18% 49%);
+    --gray-600: hsl(30 17% 40%);
+    --gray-700: hsl(29 16% 32%);
+    --gray-800: hsl(28 15% 25%);
+    --gray-900: hsl(27 12% 18%);
+    --gray-950: hsl(26 10% 12%);
+    --chart-1: hsl(34 72% 62%);
+    --chart-2: hsl(55 72% 66%);
+    --chart-3: hsl(28 67% 57%);
+    --chart-4: hsl(42 81% 88%);
+    --chart-5: hsl(45 100% 95%);
+    --sidebar-background: hsl(30 25% 7%);
+    --sidebar-foreground: hsl(45 70% 90%);
+    --sidebar-primary: hsl(34 72% 62%);
+    --sidebar-primary-foreground: hsl(30 35% 20%);
+    --sidebar-accent: hsl(30 20% 15%);
+    --sidebar-accent-foreground: hsl(45 70% 90%);
+    --sidebar-border: hsl(30 20% 18%);
+    --sidebar-ring: hsl(34 72% 62%);
+    --sidebar: hsl(30 25% 10%);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+@layer base {
+    * {
+        @apply border-border outline-ring/50;
+    }
+
+    body {
+        @apply bg-background text-foreground;
+    }
+}
+
+/* Custom animation utilities */
+@layer utilities {
+    .animation-delay-100 {
+        animation-delay: 100ms;
+    }
+
+    .animation-delay-200 {
+        animation-delay: 200ms;
+    }
+
+    .animation-delay-300 {
+        animation-delay: 300ms;
+    }
+
+    .animation-delay-400 {
+        animation-delay: 400ms;
+    }
+
+    .animation-delay-500 {
+        animation-delay: 500ms;
+    }
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
