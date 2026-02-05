@@ -8,15 +8,15 @@ import Separator from '@/components/ui/separator/Separator.vue';
         title="Privacy Policy"
         subtitle="Last updated: February 2026"
     >
-        <div class="border-border bg-background rounded-3xl border p-8 sm:p-10">
+        <div class="rounded-3xl border border-border bg-background p-8 sm:p-10">
             <div
-                class="prose prose-slate dark:prose-invert max-w-none space-y-8"
+                class="prose max-w-none space-y-8 prose-slate dark:prose-invert"
             >
                 <section>
-                    <h2 class="text-foreground mb-4 text-2xl font-bold">
+                    <h2 class="mb-4 text-2xl font-bold text-foreground">
                         Our Commitment to Privacy
                     </h2>
-                    <p class="text-muted-foreground text-base leading-relaxed">
+                    <p class="text-base leading-relaxed text-muted-foreground">
                         Honeymelon is built with privacy as a core principle. We
                         believe your media files and conversion activities are
                         your business, not ours. This privacy policy explains
@@ -27,16 +27,16 @@ import Separator from '@/components/ui/separator/Separator.vue';
                 <Separator />
 
                 <section>
-                    <h2 class="text-foreground mb-4 text-2xl font-bold">
+                    <h2 class="mb-4 text-2xl font-bold text-foreground">
                         Data We Don't Collect
                     </h2>
                     <p
-                        class="text-muted-foreground mb-4 text-base leading-relaxed"
+                        class="mb-4 text-base leading-relaxed text-muted-foreground"
                     >
                         Honeymelon operates entirely offline on your Mac. We do
                         not collect, transmit, or store:
                     </p>
-                    <ul class="text-muted-foreground space-y-2 text-base">
+                    <ul class="space-y-2 text-base text-muted-foreground">
                         <li>Your media files or their contents</li>
                         <li>File names, paths, or metadata</li>
                         <li>Conversion settings or preferences</li>
@@ -49,18 +49,18 @@ import Separator from '@/components/ui/separator/Separator.vue';
                 <Separator />
 
                 <section>
-                    <h2 class="text-foreground mb-4 text-2xl font-bold">
+                    <h2 class="mb-4 text-2xl font-bold text-foreground">
                         How Honeymelon Works
                     </h2>
                     <p
-                        class="text-muted-foreground mb-4 text-base leading-relaxed"
+                        class="mb-4 text-base leading-relaxed text-muted-foreground"
                     >
                         All media conversion happens locally on your Mac using
                         your device's hardware. Your files never leave your
                         device, and no media data is ever transmitted over the
                         network.
                     </p>
-                    <p class="text-muted-foreground text-base leading-relaxed">
+                    <p class="text-base leading-relaxed text-muted-foreground">
                         <strong>Fully Offline:</strong> Honeymelon does not
                         require an internet connection to function. There are no
                         license activations, no telemetry calls, and no network
@@ -71,10 +71,10 @@ import Separator from '@/components/ui/separator/Separator.vue';
                 <Separator />
 
                 <section>
-                    <h2 class="text-foreground mb-4 text-2xl font-bold">
+                    <h2 class="mb-4 text-2xl font-bold text-foreground">
                         Open Source Transparency
                     </h2>
-                    <p class="text-muted-foreground text-base leading-relaxed">
+                    <p class="text-base leading-relaxed text-muted-foreground">
                         Honeymelon is free and open source software, licensed
                         under the GNU General Public License v3 (GPLv3). You can
                         inspect the complete source code on
@@ -82,7 +82,7 @@ import Separator from '@/components/ui/separator/Separator.vue';
                             href="https://github.com/honeymelon-app/honeymelon"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="text-primary font-medium hover:underline"
+                            class="font-medium text-primary hover:underline"
                             >GitHub</a
                         >
                         to verify our privacy claims for yourself.
@@ -92,18 +92,18 @@ import Separator from '@/components/ui/separator/Separator.vue';
                 <Separator />
 
                 <section>
-                    <h2 class="text-foreground mb-4 text-2xl font-bold">
+                    <h2 class="mb-4 text-2xl font-bold text-foreground">
                         Website Analytics
                     </h2>
                     <p
-                        class="text-muted-foreground mb-4 text-base leading-relaxed"
+                        class="mb-4 text-base leading-relaxed text-muted-foreground"
                     >
                         This website uses
                         <a
                             href="https://www.goatcounter.com"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="text-primary font-medium hover:underline"
+                            class="font-medium text-primary hover:underline"
                             >GoatCounter</a
                         >, a privacy-friendly, open source analytics tool.
                         GoatCounter does not use cookies, does not collect
@@ -111,13 +111,13 @@ import Separator from '@/components/ui/separator/Separator.vue';
                         and PECR. All data is aggregated and no individual
                         visitors can be identified.
                     </p>
-                    <p class="text-muted-foreground text-base leading-relaxed">
+                    <p class="text-base leading-relaxed text-muted-foreground">
                         This website also makes requests to the
                         <a
                             href="https://docs.github.com/en/rest"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="text-primary font-medium hover:underline"
+                            class="font-medium text-primary hover:underline"
                             >GitHub public API</a
                         >
                         to display star counts and download information from our
@@ -127,7 +127,7 @@ import Separator from '@/components/ui/separator/Separator.vue';
                             href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="text-primary font-medium hover:underline"
+                            class="font-medium text-primary hover:underline"
                             >GitHub's Privacy Statement</a
                         >. We do not proxy, log, or store any data from these
                         requests.
@@ -137,10 +137,10 @@ import Separator from '@/components/ui/separator/Separator.vue';
                 <Separator />
 
                 <section>
-                    <h2 class="text-foreground mb-4 text-2xl font-bold">
+                    <h2 class="mb-4 text-2xl font-bold text-foreground">
                         Cookies
                     </h2>
-                    <p class="text-muted-foreground text-base leading-relaxed">
+                    <p class="text-base leading-relaxed text-muted-foreground">
                         This website does not use cookies. We do not use
                         tracking cookies, advertising cookies, or any
                         third-party cookies.
@@ -150,10 +150,10 @@ import Separator from '@/components/ui/separator/Separator.vue';
                 <Separator />
 
                 <section>
-                    <h2 class="text-foreground mb-4 text-2xl font-bold">
+                    <h2 class="mb-4 text-2xl font-bold text-foreground">
                         Data Security
                     </h2>
-                    <p class="text-muted-foreground text-base leading-relaxed">
+                    <p class="text-base leading-relaxed text-muted-foreground">
                         Since Honeymelon processes all media locally on your
                         device and doesn't transmit your files, the security of
                         your media files is entirely under your control. We
@@ -165,10 +165,10 @@ import Separator from '@/components/ui/separator/Separator.vue';
                 <Separator />
 
                 <section>
-                    <h2 class="text-foreground mb-4 text-2xl font-bold">
+                    <h2 class="mb-4 text-2xl font-bold text-foreground">
                         Children's Privacy
                     </h2>
-                    <p class="text-muted-foreground text-base leading-relaxed">
+                    <p class="text-base leading-relaxed text-muted-foreground">
                         Honeymelon is not directed at children under 13. Because
                         we do not collect any personal information from any
                         user, there is no risk of children's data being gathered
@@ -179,10 +179,10 @@ import Separator from '@/components/ui/separator/Separator.vue';
                 <Separator />
 
                 <section>
-                    <h2 class="text-foreground mb-4 text-2xl font-bold">
+                    <h2 class="mb-4 text-2xl font-bold text-foreground">
                         Changes to This Policy
                     </h2>
-                    <p class="text-muted-foreground text-base leading-relaxed">
+                    <p class="text-base leading-relaxed text-muted-foreground">
                         We may update this privacy policy from time to time.
                         Changes will be reflected by updating the "Last updated"
                         date at the top of this policy and published to our
@@ -190,7 +190,7 @@ import Separator from '@/components/ui/separator/Separator.vue';
                             href="https://github.com/honeymelon-app/honeymelon"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="text-primary font-medium hover:underline"
+                            class="font-medium text-primary hover:underline"
                             >GitHub repository</a
                         >.
                     </p>
@@ -199,15 +199,15 @@ import Separator from '@/components/ui/separator/Separator.vue';
                 <Separator />
 
                 <section>
-                    <h2 class="text-foreground mb-4 text-2xl font-bold">
+                    <h2 class="mb-4 text-2xl font-bold text-foreground">
                         Contact Us
                     </h2>
-                    <p class="text-muted-foreground text-base leading-relaxed">
+                    <p class="text-base leading-relaxed text-muted-foreground">
                         If you have questions about this privacy policy or our
                         privacy practices, please contact us at
                         <a
                             href="mailto:legal@honeymelon.app"
-                            class="text-primary font-medium hover:underline"
+                            class="font-medium text-primary hover:underline"
                             >legal@honeymelon.app</a
                         >
                         or open an issue on
@@ -215,7 +215,7 @@ import Separator from '@/components/ui/separator/Separator.vue';
                             href="https://github.com/honeymelon-app/honeymelon/issues"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="text-primary font-medium hover:underline"
+                            class="font-medium text-primary hover:underline"
                             >GitHub</a
                         >.
                     </p>

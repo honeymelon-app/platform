@@ -21,11 +21,11 @@ const highlights = [
             <AnimatedSection>
                 <div class="text-center">
                     <h2
-                        class="text-foreground text-3xl font-semibold tracking-tight sm:text-4xl"
+                        class="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
                     >
                         Free &amp; Open Source
                     </h2>
-                    <p class="text-muted-foreground mt-4 text-lg">
+                    <p class="mt-4 text-lg text-muted-foreground">
                         No subscriptions. No license keys. No strings attached.
                     </p>
                 </div>
@@ -33,25 +33,25 @@ const highlights = [
 
             <AnimatedSection :delay="100">
                 <div
-                    class="border-border bg-background mt-12 rounded-3xl border p-8 sm:p-10"
+                    class="mt-12 rounded-3xl border border-border bg-background p-8 sm:p-10"
                 >
                     <div class="text-center">
-                        <h3 class="text-foreground text-xl font-semibold">
+                        <h3 class="text-xl font-semibold text-foreground">
                             Honeymelon
                         </h3>
                         <div
                             class="mt-6 flex items-baseline justify-center gap-2"
                         >
                             <span
-                                class="text-foreground text-6xl font-semibold tracking-tight"
+                                class="text-6xl font-semibold tracking-tight text-foreground"
                             >
                                 $0
                             </span>
-                            <span class="text-muted-foreground text-lg"
+                            <span class="text-lg text-muted-foreground"
                                 >forever</span
                             >
                         </div>
-                        <p class="text-muted-foreground mt-2 text-sm">
+                        <p class="mt-2 text-sm text-muted-foreground">
                             Open source · GPLv3 licensed
                         </p>
                     </div>
@@ -63,7 +63,7 @@ const highlights = [
                             class="flex items-start gap-3"
                         >
                             <Check
-                                class="text-primary mt-0.5 h-5 w-5 shrink-0"
+                                class="mt-0.5 h-5 w-5 shrink-0 text-primary"
                             />
                             <span class="text-muted-foreground">{{
                                 highlight

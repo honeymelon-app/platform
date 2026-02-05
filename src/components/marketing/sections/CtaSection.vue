@@ -10,13 +10,13 @@ import { ArrowRight } from 'lucide-vue-next';
         <div class="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:px-8">
             <AnimatedSection>
                 <h2
-                    class="text-foreground text-3xl font-semibold tracking-tight sm:text-4xl"
+                    class="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
                 >
                     Built for macOS.
                     <br />
                     Open for everyone.
                 </h2>
-                <p class="text-muted-foreground mt-6 text-lg">
+                <p class="mt-6 text-lg text-muted-foreground">
                     Download Honeymelon and experience intelligent,
                     privacy-first media conversion on your Mac — free and open
                     source.

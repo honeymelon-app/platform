@@ -40,13 +40,13 @@ const faqs = [
 <template>
     <section
         id="faq"
-        class="border-border/50 bg-muted/30 border-t py-24 sm:py-32"
+        class="border-t border-border/50 bg-muted/30 py-24 sm:py-32"
     >
         <div class="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
             <AnimatedSection>
                 <div class="text-center">
                     <h2
-                        class="text-foreground text-3xl font-semibold tracking-tight sm:text-4xl"
+                        class="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
                     >
                         Frequently Asked Questions
                     </h2>
@@ -60,15 +60,15 @@ const faqs = [
                             v-for="(faq, index) in faqs"
                             :key="index"
                             :value="`item-${index}`"
-                            class="border-border/50 border-b"
+                            class="border-b border-border/50"
                         >
                             <AccordionTrigger
-                                class="text-foreground py-5 text-left text-base font-medium hover:no-underline"
+                                class="py-5 text-left text-base font-medium text-foreground hover:no-underline"
                             >
                                 {{ faq.question }}
                             </AccordionTrigger>
                             <AccordionContent
-                                class="text-muted-foreground pb-5"
+                                class="pb-5 text-muted-foreground"
                             >
                                 {{ faq.answer }}
                             </AccordionContent>

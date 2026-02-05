@@ -12,13 +12,13 @@ const { formattedStars, formattedDownloads, stars, downloadCount } =
 </script>
 
 <template>
-    <section id="hero" class="relative pb-24 pt-16 sm:pb-32 sm:pt-20">
+    <section id="hero" class="relative pt-16 pb-24 sm:pt-20 sm:pb-32">
         <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <AnimatedSection>
                 <div class="text-center">
                     <!-- Minimal badge -->
                     <div
-                        class="border-border bg-background text-muted-foreground mb-8 inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm"
+                        class="mb-8 inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm text-muted-foreground"
                     >
                         <AppLogoIcon class="size-4" />
                         <span>Native macOS App</span>
@@ -28,7 +28,7 @@ const { formattedStars, formattedDownloads, stars, downloadCount } =
 
                     <!-- Headline -->
                     <h1
-                        class="text-foreground mx-auto max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl"
+                        class="mx-auto max-w-3xl text-4xl font-semibold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
                     >
                         Smart Media Conversion
                         <br class="hidden sm:block" />
@@ -37,7 +37,7 @@ const { formattedStars, formattedDownloads, stars, downloadCount } =
 
                     <!-- Description -->
                     <p
-                        class="text-muted-foreground mx-auto mt-6 max-w-xl text-lg leading-relaxed sm:text-xl"
+                        class="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground sm:text-xl"
                     >
                         Remux-first intelligence that preserves quality while
                         maximizing speed. Free, open source, and privacy-first.
@@ -57,7 +57,7 @@ const { formattedStars, formattedDownloads, stars, downloadCount } =
                             as-child
                             variant="ghost"
                             size="lg"
-                            class="text-muted-foreground h-12 text-base"
+                            class="h-12 text-base text-muted-foreground"
                         >
                             <a href="#features">
                                 See How It Works
@@ -67,7 +67,7 @@ const { formattedStars, formattedDownloads, stars, downloadCount } =
                     </div>
 
                     <!-- Trust line -->
-                    <p class="text-muted-foreground/70 mt-6 text-sm">
+                    <p class="mt-6 text-sm text-muted-foreground/70">
                         Free &amp; open source · GPLv3 licensed · Files stay on
                         your Mac.
                     </p>
@@ -77,7 +77,7 @@ const { formattedStars, formattedDownloads, stars, downloadCount } =
                         <GitHubStarButton size="lg" />
                         <div
                             v-if="stars !== null || downloadCount !== null"
-                            class="text-muted-foreground/60 flex items-center gap-4 text-xs"
+                            class="flex items-center gap-4 text-xs text-muted-foreground/60"
                         >
                             <span v-if="stars !== null" class="tabular-nums">
                                 {{ formattedStars }} stars on GitHub

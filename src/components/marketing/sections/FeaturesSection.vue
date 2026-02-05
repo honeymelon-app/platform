@@ -66,12 +66,12 @@ const featureGroups = [
             <AnimatedSection>
                 <div class="text-center">
                     <h2
-                        class="text-foreground text-3xl font-semibold tracking-tight sm:text-4xl"
+                        class="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
                     >
                         Everything You Need
                     </h2>
                     <p
-                        class="text-muted-foreground mx-auto mt-4 max-w-xl text-lg"
+                        class="mx-auto mt-4 max-w-xl text-lg text-muted-foreground"
                     >
                         Powerful features, thoughtfully organized.
                     </p>
@@ -87,14 +87,14 @@ const featureGroups = [
                     <div>
                         <div class="flex items-center gap-3">
                             <div
-                                class="bg-primary/10 flex h-10 w-10 items-center justify-center rounded-xl"
+                                class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10"
                             >
                                 <component
                                     :is="group.icon"
-                                    class="text-primary h-5 w-5"
+                                    class="h-5 w-5 text-primary"
                                 />
                             </div>
-                            <h3 class="text-foreground text-lg font-semibold">
+                            <h3 class="text-lg font-semibold text-foreground">
                                 {{ group.title }}
                             </h3>
                         </div>
@@ -104,10 +104,10 @@ const featureGroups = [
                                 v-for="feature in group.features"
                                 :key="feature.name"
                             >
-                                <h4 class="text-foreground font-medium">
+                                <h4 class="font-medium text-foreground">
                                     {{ feature.name }}
                                 </h4>
-                                <p class="text-muted-foreground mt-0.5 text-sm">
+                                <p class="mt-0.5 text-sm text-muted-foreground">
                                     {{ feature.description }}
                                 </p>
                             </li>

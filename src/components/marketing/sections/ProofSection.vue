@@ -27,12 +27,12 @@ const proofPoints = [
 </script>
 
 <template>
-    <section id="proof" class="border-border/50 border-t py-20 sm:py-24">
+    <section id="proof" class="border-t border-border/50 py-20 sm:py-24">
         <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
             <AnimatedSection>
                 <div class="text-center">
                     <h2
-                        class="text-foreground text-2xl font-semibold tracking-tight sm:text-3xl"
+                        class="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl"
                     >
                         Why Honeymelon?
                     </h2>
@@ -45,15 +45,15 @@ const proofPoints = [
                         class="flex gap-4"
                     >
                         <div
-                            class="bg-primary/10 flex h-6 w-6 shrink-0 items-center justify-center rounded-full"
+                            class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10"
                         >
-                            <Check class="text-primary h-4 w-4" />
+                            <Check class="h-4 w-4 text-primary" />
                         </div>
                         <div>
-                            <h3 class="text-foreground font-medium">
+                            <h3 class="font-medium text-foreground">
                                 {{ point.title }}
                             </h3>
-                            <p class="text-muted-foreground mt-1">
+                            <p class="mt-1 text-muted-foreground">
                                 {{ point.description }}
                             </p>
                         </div>

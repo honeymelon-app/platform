@@ -30,10 +30,10 @@ function handleClick(): void {
         @click="handleClick"
         :class="[
             variant === 'default'
-                ? 'border-border bg-background text-foreground hover:border-primary/50 shadow-sm hover:shadow-md'
+                ? 'border-border bg-background text-foreground shadow-sm hover:border-primary/50 hover:shadow-md'
                 : variant === 'outline'
-                  ? 'border-border/50 text-muted-foreground hover:border-primary/50 hover:text-foreground bg-transparent'
-                  : 'text-muted-foreground hover:text-foreground border-transparent bg-transparent',
+                  ? 'border-border/50 bg-transparent text-muted-foreground hover:border-primary/50 hover:text-foreground'
+                  : 'border-transparent bg-transparent text-muted-foreground hover:text-foreground',
             size === 'sm'
                 ? 'px-3 py-1.5 text-xs'
                 : size === 'lg'

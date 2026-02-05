@@ -7,18 +7,18 @@ import { Check } from 'lucide-vue-next';
 <template>
     <section
         id="interface"
-        class="border-border/50 bg-muted/30 border-t py-24 sm:py-32"
+        class="border-t border-border/50 bg-muted/30 py-24 sm:py-32"
     >
         <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <AnimatedSection>
                 <div class="text-center">
                     <h2
-                        class="text-foreground text-3xl font-semibold tracking-tight sm:text-4xl"
+                        class="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
                     >
                         Designed for macOS
                     </h2>
                     <p
-                        class="text-muted-foreground mx-auto mt-4 max-w-xl text-lg"
+                        class="mx-auto mt-4 max-w-xl text-lg text-muted-foreground"
                     >
                         A native interface that feels right at home on your Mac.
                     </p>
@@ -30,31 +30,31 @@ import { Check } from 'lucide-vue-next';
                 <AnimatedSection direction="left">
                     <div>
                         <h3
-                            class="text-foreground text-2xl font-semibold tracking-tight"
+                            class="text-2xl font-semibold tracking-tight text-foreground"
                         >
                             Effortless Queue Management
                         </h3>
-                        <p class="text-muted-foreground mt-4 text-lg">
+                        <p class="mt-4 text-lg text-muted-foreground">
                             Track pending, active, and completed conversions in
                             one clean interface. Batch process with confidence.
                         </p>
                         <ul class="mt-6 space-y-3">
                             <li
-                                class="text-muted-foreground flex items-center gap-3"
+                                class="flex items-center gap-3 text-muted-foreground"
                             >
-                                <Check class="text-primary h-5 w-5 shrink-0" />
+                                <Check class="h-5 w-5 shrink-0 text-primary" />
                                 <span>Real-time progress tracking</span>
                             </li>
                             <li
-                                class="text-muted-foreground flex items-center gap-3"
+                                class="flex items-center gap-3 text-muted-foreground"
                             >
-                                <Check class="text-primary h-5 w-5 shrink-0" />
+                                <Check class="h-5 w-5 shrink-0 text-primary" />
                                 <span>Concurrent job management</span>
                             </li>
                             <li
-                                class="text-muted-foreground flex items-center gap-3"
+                                class="flex items-center gap-3 text-muted-foreground"
                             >
-                                <Check class="text-primary h-5 w-5 shrink-0" />
+                                <Check class="h-5 w-5 shrink-0 text-primary" />
                                 <span>Accurate ETA calculations</span>
                             </li>
                         </ul>
@@ -83,32 +83,32 @@ import { Check } from 'lucide-vue-next';
                 <AnimatedSection direction="right" class="order-1 lg:order-2">
                     <div>
                         <h3
-                            class="text-foreground text-2xl font-semibold tracking-tight"
+                            class="text-2xl font-semibold tracking-tight text-foreground"
                         >
                             Beautiful in Any Light
                         </h3>
-                        <p class="text-muted-foreground mt-4 text-lg">
+                        <p class="mt-4 text-lg text-muted-foreground">
                             Full dark mode support that follows your system
                             preferences. Easy on the eyes during late-night
                             sessions.
                         </p>
                         <ul class="mt-6 space-y-3">
                             <li
-                                class="text-muted-foreground flex items-center gap-3"
+                                class="flex items-center gap-3 text-muted-foreground"
                             >
-                                <Check class="text-primary h-5 w-5 shrink-0" />
+                                <Check class="h-5 w-5 shrink-0 text-primary" />
                                 <span>Automatic system sync</span>
                             </li>
                             <li
-                                class="text-muted-foreground flex items-center gap-3"
+                                class="flex items-center gap-3 text-muted-foreground"
                             >
-                                <Check class="text-primary h-5 w-5 shrink-0" />
+                                <Check class="h-5 w-5 shrink-0 text-primary" />
                                 <span>Carefully balanced colors</span>
                             </li>
                             <li
-                                class="text-muted-foreground flex items-center gap-3"
+                                class="flex items-center gap-3 text-muted-foreground"
                             >
-                                <Check class="text-primary h-5 w-5 shrink-0" />
+                                <Check class="h-5 w-5 shrink-0 text-primary" />
                                 <span>Reduced eye strain</span>
                             </li>
                         </ul>
@@ -121,32 +121,32 @@ import { Check } from 'lucide-vue-next';
                 <AnimatedSection direction="left">
                     <div>
                         <h3
-                            class="text-foreground text-2xl font-semibold tracking-tight"
+                            class="text-2xl font-semibold tracking-tight text-foreground"
                         >
                             Smart Preset System
                         </h3>
-                        <p class="text-muted-foreground mt-4 text-lg">
+                        <p class="mt-4 text-lg text-muted-foreground">
                             Choose from dozens of optimized presets or create
                             your own custom configurations. No command-line
                             knowledge required.
                         </p>
                         <ul class="mt-6 space-y-3">
                             <li
-                                class="text-muted-foreground flex items-center gap-3"
+                                class="flex items-center gap-3 text-muted-foreground"
                             >
-                                <Check class="text-primary h-5 w-5 shrink-0" />
+                                <Check class="h-5 w-5 shrink-0 text-primary" />
                                 <span>Platform-specific presets</span>
                             </li>
                             <li
-                                class="text-muted-foreground flex items-center gap-3"
+                                class="flex items-center gap-3 text-muted-foreground"
                             >
-                                <Check class="text-primary h-5 w-5 shrink-0" />
+                                <Check class="h-5 w-5 shrink-0 text-primary" />
                                 <span>Quality-optimized profiles</span>
                             </li>
                             <li
-                                class="text-muted-foreground flex items-center gap-3"
+                                class="flex items-center gap-3 text-muted-foreground"
                             >
-                                <Check class="text-primary h-5 w-5 shrink-0" />
+                                <Check class="h-5 w-5 shrink-0 text-primary" />
                                 <span>Save custom configurations</span>
                             </li>
                         </ul>
@@ -175,32 +175,32 @@ import { Check } from 'lucide-vue-next';
                 <AnimatedSection direction="right" class="order-1 lg:order-2">
                     <div>
                         <h3
-                            class="text-foreground text-2xl font-semibold tracking-tight"
+                            class="text-2xl font-semibold tracking-tight text-foreground"
                         >
                             Flexible Output Options
                         </h3>
-                        <p class="text-muted-foreground mt-4 text-lg">
+                        <p class="mt-4 text-lg text-muted-foreground">
                             Choose where your converted files go. Keep them
                             organized with custom naming patterns and folder
                             structures.
                         </p>
                         <ul class="mt-6 space-y-3">
                             <li
-                                class="text-muted-foreground flex items-center gap-3"
+                                class="flex items-center gap-3 text-muted-foreground"
                             >
-                                <Check class="text-primary h-5 w-5 shrink-0" />
+                                <Check class="h-5 w-5 shrink-0 text-primary" />
                                 <span>Custom output directories</span>
                             </li>
                             <li
-                                class="text-muted-foreground flex items-center gap-3"
+                                class="flex items-center gap-3 text-muted-foreground"
                             >
-                                <Check class="text-primary h-5 w-5 shrink-0" />
+                                <Check class="h-5 w-5 shrink-0 text-primary" />
                                 <span>Automatic folder creation</span>
                             </li>
                             <li
-                                class="text-muted-foreground flex items-center gap-3"
+                                class="flex items-center gap-3 text-muted-foreground"
                             >
-                                <Check class="text-primary h-5 w-5 shrink-0" />
+                                <Check class="h-5 w-5 shrink-0 text-primary" />
                                 <span>Smart file naming</span>
                             </li>
                         </ul>
@@ -213,31 +213,31 @@ import { Check } from 'lucide-vue-next';
                 <AnimatedSection direction="left">
                     <div>
                         <h3
-                            class="text-foreground text-2xl font-semibold tracking-tight"
+                            class="text-2xl font-semibold tracking-tight text-foreground"
                         >
                             Multi-Language Support
                         </h3>
-                        <p class="text-muted-foreground mt-4 text-lg">
+                        <p class="mt-4 text-lg text-muted-foreground">
                             Use Honeymelon in your preferred language. Built
                             with internationalization in mind from day one.
                         </p>
                         <ul class="mt-6 space-y-3">
                             <li
-                                class="text-muted-foreground flex items-center gap-3"
+                                class="flex items-center gap-3 text-muted-foreground"
                             >
-                                <Check class="text-primary h-5 w-5 shrink-0" />
+                                <Check class="h-5 w-5 shrink-0 text-primary" />
                                 <span>Multiple language options</span>
                             </li>
                             <li
-                                class="text-muted-foreground flex items-center gap-3"
+                                class="flex items-center gap-3 text-muted-foreground"
                             >
-                                <Check class="text-primary h-5 w-5 shrink-0" />
+                                <Check class="h-5 w-5 shrink-0 text-primary" />
                                 <span>Native translations</span>
                             </li>
                             <li
-                                class="text-muted-foreground flex items-center gap-3"
+                                class="flex items-center gap-3 text-muted-foreground"
                             >
-                                <Check class="text-primary h-5 w-5 shrink-0" />
+                                <Check class="h-5 w-5 shrink-0 text-primary" />
                                 <span>Community contributions</span>
                             </li>
                         </ul>

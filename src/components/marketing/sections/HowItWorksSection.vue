@@ -29,12 +29,12 @@ const steps = [
             <AnimatedSection>
                 <div class="text-center">
                     <h2
-                        class="text-foreground text-3xl font-semibold tracking-tight sm:text-4xl"
+                        class="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
                     >
                         How It Works
                     </h2>
                     <p
-                        class="text-muted-foreground mx-auto mt-4 max-w-xl text-lg"
+                        class="mx-auto mt-4 max-w-xl text-lg text-muted-foreground"
                     >
                         Three steps. That's it.
                     </p>
@@ -49,14 +49,14 @@ const steps = [
                 >
                     <div class="relative">
                         <div
-                            class="text-primary/20 mb-4 text-4xl font-semibold tabular-nums"
+                            class="mb-4 text-4xl font-semibold text-primary/20 tabular-nums"
                         >
                             {{ step.number }}
                         </div>
-                        <h3 class="text-foreground text-lg font-semibold">
+                        <h3 class="text-lg font-semibold text-foreground">
                             {{ step.title }}
                         </h3>
-                        <p class="text-muted-foreground mt-2">
+                        <p class="mt-2 text-muted-foreground">
                             {{ step.description }}
                         </p>
                     </div>

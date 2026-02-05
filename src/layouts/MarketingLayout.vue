@@ -30,13 +30,13 @@ onUnmounted(() => {
 </script>
 
 <template>
-    <div class="bg-background min-h-screen">
+    <div class="min-h-screen bg-background">
         <!-- Header: Clean, minimal -->
         <header
             class="sticky top-0 z-50 transition-all duration-200"
             :class="[
                 isScrolled
-                    ? 'border-border/50 bg-background/95 border-b backdrop-blur-sm'
+                    ? 'border-b border-border/50 bg-background/95 backdrop-blur-sm'
                     : 'border-b border-transparent bg-transparent',
             ]"
         >
@@ -44,7 +44,7 @@ onUnmounted(() => {
                 <div class="flex h-16 items-center justify-between">
                     <RouterLink to="/" class="flex items-center gap-2.5">
                         <AppLogoIcon class="h-8 w-8" />
-                        <span class="text-foreground text-lg font-semibold"
+                        <span class="text-lg font-semibold text-foreground"
                             >Honeymelon</span
                         >
                     </RouterLink>
@@ -138,7 +138,7 @@ onUnmounted(() => {
                                         >
                                     </Button>
                                     <div
-                                        class="border-border/50 mt-4 border-t pt-4"
+                                        class="mt-4 border-t border-border/50 pt-4"
                                     >
                                         <GitHubStarButton size="sm" />
                                     </div>
@@ -154,7 +154,7 @@ onUnmounted(() => {
         <slot />
 
         <!-- Footer: Clean, editorial -->
-        <footer class="border-border/50 border-t py-16">
+        <footer class="border-t border-border/50 py-16">
             <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
                 <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
                     <!-- Brand -->
@@ -162,12 +162,12 @@ onUnmounted(() => {
                         <div class="flex items-center gap-2.5">
                             <AppLogoIcon class="h-7 w-7" />
                             <span
-                                class="text-foreground text-base font-semibold"
+                                class="text-base font-semibold text-foreground"
                                 >Honeymelon</span
                             >
                         </div>
                         <p
-                            class="text-muted-foreground mt-4 text-sm leading-relaxed"
+                            class="mt-4 text-sm leading-relaxed text-muted-foreground"
                         >
                             Free &amp; open source media conversion for macOS.
                             Built for Apple Silicon.
@@ -176,14 +176,14 @@ onUnmounted(() => {
 
                     <!-- Product -->
                     <div>
-                        <h3 class="text-foreground text-sm font-medium">
+                        <h3 class="text-sm font-medium text-foreground">
                             Product
                         </h3>
                         <ul class="mt-4 space-y-3 text-sm">
                             <li>
                                 <RouterLink
                                     to="/#features"
-                                    class="text-muted-foreground hover:text-foreground transition-colors"
+                                    class="text-muted-foreground transition-colors hover:text-foreground"
                                 >
                                     Features
                                 </RouterLink>
@@ -191,7 +191,7 @@ onUnmounted(() => {
                             <li>
                                 <RouterLink
                                     to="/#download"
-                                    class="text-muted-foreground hover:text-foreground transition-colors"
+                                    class="text-muted-foreground transition-colors hover:text-foreground"
                                 >
                                     Download
                                 </RouterLink>
@@ -199,7 +199,7 @@ onUnmounted(() => {
                             <li>
                                 <RouterLink
                                     to="/#open-source"
-                                    class="text-muted-foreground hover:text-foreground transition-colors"
+                                    class="text-muted-foreground transition-colors hover:text-foreground"
                                 >
                                     Open Source
                                 </RouterLink>
@@ -209,7 +209,7 @@ onUnmounted(() => {
                                     href="https://docs.honeymelon.app"
                                     target="_blank"
                                     rel="noopener"
-                                    class="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 transition-colors"
+                                    class="inline-flex items-center gap-1 text-muted-foreground transition-colors hover:text-foreground"
                                 >
                                     Documentation
                                     <ExternalLink class="h-3 w-3" />
@@ -220,7 +220,7 @@ onUnmounted(() => {
 
                     <!-- Resources -->
                     <div>
-                        <h3 class="text-foreground text-sm font-medium">
+                        <h3 class="text-sm font-medium text-foreground">
                             Resources
                         </h3>
                         <ul class="mt-4 space-y-3 text-sm">
@@ -229,7 +229,7 @@ onUnmounted(() => {
                                     href="https://github.com/honeymelon-app/honeymelon"
                                     target="_blank"
                                     rel="noopener"
-                                    class="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 transition-colors"
+                                    class="inline-flex items-center gap-1 text-muted-foreground transition-colors hover:text-foreground"
                                 >
                                     GitHub
                                     <ExternalLink class="h-3 w-3" />
@@ -240,7 +240,7 @@ onUnmounted(() => {
                                     href="https://docs.honeymelon.app"
                                     target="_blank"
                                     rel="noopener"
-                                    class="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 transition-colors"
+                                    class="inline-flex items-center gap-1 text-muted-foreground transition-colors hover:text-foreground"
                                 >
                                     Documentation
                                     <ExternalLink class="h-3 w-3" />
@@ -251,7 +251,7 @@ onUnmounted(() => {
                                     href="https://github.com/orgs/honeymelon-app/discussions"
                                     target="_blank"
                                     rel="noopener"
-                                    class="text-muted-foreground hover:text-foreground inline-flex items-center gap-1 transition-colors"
+                                    class="inline-flex items-center gap-1 text-muted-foreground transition-colors hover:text-foreground"
                                 >
                                     Support
                                     <ExternalLink class="h-3 w-3" />
@@ -262,14 +262,14 @@ onUnmounted(() => {
 
                     <!-- Legal -->
                     <div>
-                        <h3 class="text-foreground text-sm font-medium">
+                        <h3 class="text-sm font-medium text-foreground">
                             Legal
                         </h3>
                         <ul class="mt-4 space-y-3 text-sm">
                             <li>
                                 <RouterLink
                                     to="/privacy"
-                                    class="text-muted-foreground hover:text-foreground transition-colors"
+                                    class="text-muted-foreground transition-colors hover:text-foreground"
                                 >
                                     Privacy Policy
                                 </RouterLink>
@@ -277,7 +277,7 @@ onUnmounted(() => {
                             <li>
                                 <RouterLink
                                     to="/terms"
-                                    class="text-muted-foreground hover:text-foreground transition-colors"
+                                    class="text-muted-foreground transition-colors hover:text-foreground"
                                 >
                                     Terms of Use
                                 </RouterLink>
@@ -291,11 +291,11 @@ onUnmounted(() => {
                 <div
                     class="flex flex-col items-center justify-between gap-4 sm:flex-row"
                 >
-                    <p class="text-muted-foreground text-sm">
+                    <p class="text-sm text-muted-foreground">
                         © {{ new Date().getFullYear() }} Honeymelon. Released
                         under GPLv3.
                     </p>
-                    <p class="text-muted-foreground/70 text-sm">
+                    <p class="text-sm text-muted-foreground/70">
                         macOS 13+ · Apple Silicon · Free &amp; Open Source
                     </p>
                 </div>
