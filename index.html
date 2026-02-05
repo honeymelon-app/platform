@@ -11,6 +11,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <!-- GoatCounter Analytics — free for open source, no cookies, no tracking -->
     <script data-goatcounter="https://honeymelon.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <!-- SPA redirect handler for GitHub Pages 404 routing -->
+    <script>
+      (function() {
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== location.href) {
+          history.replaceState(null, null, redirect);
+        }
+      })();
+    </script>
   </head>
   <body class="font-sans antialiased">
     <div id="app"></div>
