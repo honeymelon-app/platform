@@ -1,66 +1,51 @@
-# Copilot Instructions: HoneyMelon Website
+# Honeymelon Website — Copilot Instructions
 
-## Project Overview
-Vue 3 + TypeScript + Vite single-page application. Standard Vite template structure with strict TypeScript configuration.
+## Project Context
+
+This is the marketing website for Honeymelon, a free and open source macOS media converter. The site is a static SPA built with Vue 3, TypeScript, Vite, and Tailwind CSS 4.
 
 ## Tech Stack
-- **Framework**: Vue 3.5+ with Composition API
-- **Language**: TypeScript 5.9+ (strict mode)
-- **Build Tool**: Vite 7.2+
-- **Entry Point**: [src/main.ts](../src/main.ts) → [App.vue](../src/App.vue)
 
-## Component Patterns
+- **Vue 3.5** with `<script setup>` + TypeScript 5.9
+- **Vite 7** for dev server and production builds
+- **Tailwind CSS 4** with `tw-animate-css`
+- **Vue Router 4** (history mode, lazy-loaded pages)
+- **Reka UI** for accessible headless UI primitives
+- **Lucide Vue** for icons
+- **GoatCounter** for privacy-friendly analytics (no cookies)
 
-### Script Setup Syntax (Required)
-All Vue components use `<script setup lang="ts">` - never use Options API:
+## Conventions
 
-```vue
-<script setup lang="ts">
-import { ref } from 'vue'
+- Use `<script setup lang="ts">` for all Vue components.
+- Follow existing code conventions — check sibling files for structure and naming.
+- Use descriptive, self-documenting names for variables and functions.
+- Check for existing components in `src/components/` before creating new ones.
+- UI primitives live in `src/components/ui/` (shadcn-vue — do not edit directly).
+- Marketing components live in `src/components/marketing/`.
+- Page-level components live in `src/pages/`.
+- Composables live in `src/composables/` and follow the `use*` naming pattern.
+- Use the `@/` alias for imports from `src/`.
 
-// Props with TypeScript
-defineProps<{ msg: string }>()
+## Code Quality
 
-// Reactive state
-const count = ref(0)
-</script>
-```
+- **Formatting**: Prettier with `prettier-plugin-organize-imports` and `prettier-plugin-tailwindcss`.
+- **Linting**: ESLint with `@vue/eslint-config-typescript` and `eslint-config-prettier`.
+- **Type checking**: `vue-tsc` — all code must pass `npm run typecheck`.
+- Never use `any` unless absolutely necessary.
+- Prefer `interface` over `type` for object shapes.
 
-See [HelloWorld.vue](../src/components/HelloWorld.vue) for reference implementation.
+## Key Files
 
-### Component Structure
-- Components live in `src/components/`
-- Use scoped CSS: `<style scoped>`
-- TypeScript props via `defineProps<T>()`
-- Composition API imports from `vue` (ref, computed, etc.)
+- `src/router.ts` — Routes with lazy imports and scroll behavior.
+- `src/layouts/MarketingLayout.vue` — Shared header/footer layout.
+- `src/composables/useGitHubRepo.ts` — GitHub API integration (stars, releases, downloads).
+- `src/lib/analytics.ts` — GoatCounter event tracking wrapper.
+- `src/lib/utils.ts` — `cn()` utility for Tailwind class merging.
 
-## TypeScript Configuration
-- **Strict mode enabled**: `noUnusedLocals`, `noUnusedParameters`, `noFallthroughCasesInSwitch`
-- Split configs: `tsconfig.app.json` (app code) and `tsconfig.node.json` (build tooling)
-- Vite types available via `vite/client`
+## Analytics
 
-## Development Workflow
+Use `trackEvent()` from `@/lib/analytics` for custom events. Available events: `Download`, `Star on GitHub`, `Visit GitHub`, `View Release`. GoatCounter is loaded in `index.html` — the wrapper gracefully no-ops when blocked.
 
-```bash
-npm run dev      # Start dev server with HMR
-npm run build    # Type-check with vue-tsc + production build
-npm run preview  # Preview production build locally
-```
+## Deployment
 
-**Important**: `npm run build` runs TypeScript compilation (`vue-tsc -b`) before Vite build - fix all type errors before building.
-
-## File Organization
-```
-src/
-  main.ts           # App entry point
-  App.vue           # Root component
-  components/       # Reusable Vue components
-  assets/           # Static assets (images, etc.)
-  style.css         # Global styles
-```
-
-## Key Conventions
-- **No default exports for components** - Vue SFC `<script setup>` handles this
-- **Composition API only** - no mixins, no Options API
-- **TypeScript-first** - leverage strict type checking, avoid `any`
-- **HMR-friendly** - changes auto-reload, test frequently during development
+Static SPA — build with `npm run build`, deploy `dist/`. Host must redirect all paths to `index.html` for SPA routing.
