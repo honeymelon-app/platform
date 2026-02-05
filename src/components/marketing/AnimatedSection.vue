@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { useScrollAnimation } from '@/composables/useScrollAnimation'
-import { computed } from 'vue'
+import { useScrollAnimation } from '@/composables/useScrollAnimation';
+import { computed } from 'vue';
 
 interface Props {
-    delay?: number
-    direction?: 'up' | 'down' | 'left' | 'right'
-    duration?: number
-    distance?: string
-    once?: boolean
+    delay?: number;
+    direction?: 'up' | 'down' | 'left' | 'right';
+    duration?: number;
+    distance?: string;
+    once?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -16,18 +16,18 @@ const props = withDefaults(defineProps<Props>(), {
     duration: 600,
     distance: '24px',
     once: true,
-})
+});
 
 const { elementRef, isVisible } = useScrollAnimation({
     once: props.once,
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',
-})
+});
 
 const transitionStyle = computed(() => ({
     transitionDelay: `${props.delay}ms`,
     transitionDuration: `${props.duration}ms`,
-}))
+}));
 </script>
 
 <template>

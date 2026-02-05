@@ -20,7 +20,7 @@ const steps = [
         description:
             'Honeymelon analyzes your files and picks the fastest path—remux when possible, transcode when needed.',
     },
-]
+];
 </script>
 
 <template>
@@ -29,12 +29,12 @@ const steps = [
             <AnimatedSection>
                 <div class="text-center">
                     <h2
-                        class="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+                        class="text-foreground text-3xl font-semibold tracking-tight sm:text-4xl"
                     >
                         How It Works
                     </h2>
                     <p
-                        class="mx-auto mt-4 max-w-xl text-lg text-muted-foreground"
+                        class="text-muted-foreground mx-auto mt-4 max-w-xl text-lg"
                     >
                         Three steps. That's it.
                     </p>
@@ -49,14 +49,14 @@ const steps = [
                 >
                     <div class="relative">
                         <div
-                            class="mb-4 text-4xl font-semibold text-primary/20 tabular-nums"
+                            class="text-primary/20 mb-4 text-4xl font-semibold tabular-nums"
                         >
                             {{ step.number }}
                         </div>
-                        <h3 class="text-lg font-semibold text-foreground">
+                        <h3 class="text-foreground text-lg font-semibold">
                             {{ step.title }}
                         </h3>
-                        <p class="mt-2 text-muted-foreground">
+                        <p class="text-muted-foreground mt-2">
                             {{ step.description }}
                         </p>
                     </div>

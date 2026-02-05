@@ -13,11 +13,11 @@ declare global {
     interface Window {
         goatcounter?: {
             count: (vars: {
-                path: string
-                title?: string
-                event?: boolean
-            }) => void
-        }
+                path: string;
+                title?: string;
+                event?: boolean;
+            }) => void;
+        };
     }
 }
 
@@ -25,7 +25,7 @@ export type AnalyticsEvent =
     | 'Download'
     | 'Star on GitHub'
     | 'Visit GitHub'
-    | 'View Release'
+    | 'View Release';
 
 /**
  * Track a custom event in GoatCounter.
@@ -39,13 +39,15 @@ export function trackEvent(
 ): void {
     if (typeof window !== 'undefined' && window.goatcounter?.count) {
         const title = props
-            ? `${event} (${Object.entries(props).map(([k, v]) => `${k}=${v}`).join(', ')})`
-            : event
+            ? `${event} (${Object.entries(props)
+                  .map(([k, v]) => `${k}=${v}`)
+                  .join(', ')})`
+            : event;
 
         window.goatcounter.count({
             path: `events/${event.toLowerCase().replace(/\s+/g, '-')}`,
             title,
             event: true,
-        })
+        });
     }
 }

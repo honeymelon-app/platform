@@ -30,15 +30,15 @@ function handleClick(): void {
         @click="handleClick"
         :class="[
             variant === 'default'
-                ? 'border-border bg-background text-foreground shadow-sm hover:border-primary/50 hover:shadow-md'
+                ? 'border-border bg-background text-foreground hover:border-primary/50 shadow-sm hover:shadow-md'
                 : variant === 'outline'
-                    ? 'border-border/50 bg-transparent text-muted-foreground hover:border-primary/50 hover:text-foreground'
-                    : 'border-transparent bg-transparent text-muted-foreground hover:text-foreground',
+                  ? 'border-border/50 text-muted-foreground hover:border-primary/50 hover:text-foreground bg-transparent'
+                  : 'text-muted-foreground hover:text-foreground border-transparent bg-transparent',
             size === 'sm'
                 ? 'px-3 py-1.5 text-xs'
                 : size === 'lg'
-                    ? 'px-5 py-2.5 text-sm'
-                    : 'px-4 py-2 text-sm',
+                  ? 'px-5 py-2.5 text-sm'
+                  : 'px-4 py-2 text-sm',
         ]"
     >
         <Star

@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -23,15 +23,15 @@ const router = createRouter({
         },
     ],
     scrollBehavior(to, _from, savedPosition) {
-        if (savedPosition) return savedPosition
-        if (to.hash) return { el: to.hash, behavior: 'smooth' }
-        return { top: 0 }
+        if (savedPosition) return savedPosition;
+        if (to.hash) return { el: to.hash, behavior: 'smooth' };
+        return { top: 0 };
     },
-})
+});
 
 router.afterEach((to) => {
-    const title = to.meta.title as string | undefined
-    if (title) document.title = title
-})
+    const title = to.meta.title as string | undefined;
+    if (title) document.title = title;
+});
 
-export default router
+export default router;

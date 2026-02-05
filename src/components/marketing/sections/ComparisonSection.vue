@@ -17,35 +17,36 @@ const comparisonFeatures = [
             <AnimatedSection>
                 <div class="text-center">
                     <h2
-                        class="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+                        class="text-foreground text-3xl font-semibold tracking-tight sm:text-4xl"
                     >
                         The Honeymelon Difference
                     </h2>
-                    <p class="mt-4 text-lg text-muted-foreground">
-                        How we compare to closed-source, subscription-based alternatives.
+                    <p class="text-muted-foreground mt-4 text-lg">
+                        How we compare to closed-source, subscription-based
+                        alternatives.
                     </p>
                 </div>
             </AnimatedSection>
 
             <AnimatedSection :delay="100">
                 <div
-                    class="mt-12 overflow-hidden rounded-2xl border border-border/50 bg-background"
+                    class="border-border/50 bg-background mt-12 overflow-hidden rounded-2xl border"
                 >
                     <table class="w-full">
                         <thead>
-                            <tr class="border-b border-border/50">
+                            <tr class="border-border/50 border-b">
                                 <th
-                                    class="px-6 py-4 text-left text-sm font-medium text-muted-foreground"
+                                    class="text-muted-foreground px-6 py-4 text-left text-sm font-medium"
                                 >
                                     Feature
                                 </th>
                                 <th
-                                    class="px-6 py-4 text-center text-sm font-semibold text-foreground"
+                                    class="text-foreground px-6 py-4 text-center text-sm font-semibold"
                                 >
                                     Honeymelon
                                 </th>
                                 <th
-                                    class="px-6 py-4 text-center text-sm font-medium text-muted-foreground"
+                                    class="text-muted-foreground px-6 py-4 text-center text-sm font-medium"
                                 >
                                     Others
                                 </th>
@@ -55,28 +56,29 @@ const comparisonFeatures = [
                             <tr
                                 v-for="(item, index) in comparisonFeatures"
                                 :key="item.feature"
-                                :class="index !== comparisonFeatures.length - 1
-                                        ? 'border-b border-border/50'
+                                :class="
+                                    index !== comparisonFeatures.length - 1
+                                        ? 'border-border/50 border-b'
                                         : ''
-                                    "
+                                "
                             >
-                                <td class="px-6 py-4 text-sm text-foreground">
+                                <td class="text-foreground px-6 py-4 text-sm">
                                     {{ item.feature }}
                                 </td>
                                 <td class="px-6 py-4 text-center">
                                     <div class="flex justify-center">
                                         <div
                                             v-if="item.us"
-                                            class="flex h-6 w-6 items-center justify-center rounded-full bg-primary/10"
+                                            class="bg-primary/10 flex h-6 w-6 items-center justify-center rounded-full"
                                         >
                                             <Check
-                                                class="h-4 w-4 text-primary"
+                                                class="text-primary h-4 w-4"
                                                 :stroke-width="2.5"
                                             />
                                         </div>
                                         <X
                                             v-else
-                                            class="h-5 w-5 text-muted-foreground/50"
+                                            class="text-muted-foreground/50 h-5 w-5"
                                         />
                                     </div>
                                 </td>
@@ -84,15 +86,15 @@ const comparisonFeatures = [
                                     <div class="flex justify-center">
                                         <div
                                             v-if="item.them"
-                                            class="flex h-6 w-6 items-center justify-center rounded-full bg-muted"
+                                            class="bg-muted flex h-6 w-6 items-center justify-center rounded-full"
                                         >
                                             <Check
-                                                class="h-4 w-4 text-muted-foreground"
+                                                class="text-muted-foreground h-4 w-4"
                                             />
                                         </div>
                                         <X
                                             v-else
-                                            class="h-5 w-5 text-muted-foreground/50"
+                                            class="text-muted-foreground/50 h-5 w-5"
                                         />
                                     </div>
                                 </td>
