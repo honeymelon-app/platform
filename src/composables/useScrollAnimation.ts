@@ -68,7 +68,7 @@ export function useScrollAnimation(options: UseScrollAnimationOptions = {}): {
 }
 
 export function useStaggeredAnimation(
-    itemCount: number,
+    _itemCount: number,
     baseDelay: number = 100,
 ): {
     getDelay: (index: number) => string;

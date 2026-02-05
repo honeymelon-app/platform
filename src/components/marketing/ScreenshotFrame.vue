@@ -18,6 +18,7 @@ const { elementRef, isVisible } = useScrollAnimation({
     threshold: 0.15,
     rootMargin: '0px 0px -50px 0px',
 });
+void elementRef; // bound via ref="elementRef" in template
 
 const transitionClass = computed(() => {
     if (isVisible.value) {

@@ -23,6 +23,7 @@ const { elementRef, isVisible } = useScrollAnimation({
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',
 });
+void elementRef; // bound via ref="elementRef" in template
 
 const transitionStyle = computed(() => ({
     transitionDelay: `${props.delay}ms`,
